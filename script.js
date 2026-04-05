@@ -1,3 +1,20 @@
+// ===== DETECCIÓN DE DISPOSITIVO MÓVIL Y CAMBIO DE IMAGEN =====
+function esMobil() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+function cambiarImagenPortada() {
+    const heroImage = document.getElementById('heroImage');
+    
+    if (esMobil()) {
+        // Imagen para dispositivos móviles
+        heroImage.src = 'https://github.com/eduvc71-code/creaciones-ane/raw/main/Captura%20de%20pantalla%202026-04-05%20034339%20(1).png';
+    } else {
+        // Imagen para desktop
+        heroImage.src = 'https://github.com/eduvc71-code/creaciones-ane/raw/main/Captura%20de%20pantalla%202026-04-05%20034339.png';
+    }
+}
+
 // ===== MENU MOBILE =====
 const menuToggle = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
@@ -165,6 +182,9 @@ window.addEventListener('scroll', () => {
 
 // ===== ANIMACIONES AL CARGAR =====
 document.addEventListener('DOMContentLoaded', () => {
+    // Cambiar imagen de portada según dispositivo
+    cambiarImagenPortada();
+    
     const fadeElements = document.querySelectorAll('.fade-in');
     
     fadeElements.forEach((element, index) => {
@@ -177,13 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 });
 
-// ===== DETECCIÓN DE DISPOSITIVO MÓVIL =====
-function esMobil() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
+// Cambiar imagen también al redimensionar pantalla
+window.addEventListener('resize', cambiarImagenPortada);
 
 if (esMobil()) {
     document.body.classList.add('mobile');
 }
 
 console.log('✨ Creaciones Ane - Sitio web cargado exitosamente');
+console.log('📱 Dispositivo móvil:', esMobil());
