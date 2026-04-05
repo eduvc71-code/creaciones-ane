@@ -3,12 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Creaciones Ane</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a simple website structure.</p>
-    <script src="script.js"></script>
+    <nav class="navbar">
+        <h1>Creaciones Ane</h1>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero" style="background: linear-gradient(to right, #ff7e5f, #feb47b);">
+        <h2>Welcome to Creaciones Ane</h2>
+    </section>
+
+    <section id="productos">
+        <h2>Productos</h2>
+        <div class="card">
+            <h3>Poleras</h3>
+            <span class="badge">New</span>
+        </div>
+        <div class="card">
+            <h3>Tazas</h3>
+            <span class="badge">Sale</span>
+        </div>
+        <div class="card">
+            <h3>Sublimación</h3>
+            <span class="badge">Popular</span>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <h2>Galería</h2>
+        <div class="gallery-item">Item 1</div>
+        <div class="gallery-item">Item 2</div>
+        <div class="gallery-item">Item 3</div>
+        <div class="gallery-item">Item 4</div>
+        <div class="gallery-item">Item 5</div>
+        <div class="gallery-item">Item 6</div>
+    </section>
+
+    <section id="servicios">
+        <h2>Servicios</h2>
+        <div class="service-card">
+            <span>😊</span>
+            <h3>Design</h3>
+        </div>
+        <div class="service-card">
+            <span>🛠️</span>
+            <h3>Production</h3>
+        </div>
+        <div class="service-card">
+            <span>📦</span>
+            <h3>Shipping</h3>
+        </div>
+        <div class="service-card">
+            <span>💬</span>
+            <h3>Customer Support</h3>
+        </div>
+        <div class="service-card">
+            <span>📈</span>
+            <h3>Marketing</h3>
+        </div>
+        <div class="service-card">
+            <span>👥</span>
+            <h3>Networking</h3>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <button type="submit">Send</button>
+        </form>
+        <div class="contact-info">
+            <p>Email: contact@creacionesane.com</p>
+            <p>Phone: +123456789</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Creaciones Ane. All rights reserved.</p>
+    </footer>
+
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .navbar { background: #333; color: #fff; padding: 1rem; }
+        nav ul { list-style: none; }
+        nav ul li { display: inline; margin-right: 15px; }
+        .card, .gallery-item, .service-card { border: 1px solid #ccc; padding: 20px; margin: 15px; }
+        .badge { background: red; color: white; padding: 5px; border-radius: 5px; }
+        footer { text-align: center; padding: 1rem; background: #333; color: white; }
+    </style>
 </body>
 </html>
