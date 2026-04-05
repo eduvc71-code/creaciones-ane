@@ -34,6 +34,7 @@ body {
     padding: 0 20px;
 }
 
+/* ===== NAVBAR ===== */
 .navbar {
     position: sticky;
     top: 0;
@@ -86,9 +87,22 @@ body {
     height: 3px;
     background: var(--white);
     border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
-/* HERO CON IMAGEN */
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* ===== HERO CON IMAGEN ===== */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -140,14 +154,17 @@ body {
     font-weight: 800;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: slideDown 0.8s ease-out;
 }
 
 .hero-subtitle {
     font-size: 1.3rem;
     margin-bottom: 2rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.8s ease-out 0.2s backwards;
 }
 
+/* ===== BOTONES ===== */
 .btn {
     padding: 12px 30px;
     border: none;
@@ -185,6 +202,56 @@ body {
     width: 100%;
 }
 
+/* ===== BOTONES FLOTANTES ===== */
+.floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.float-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease-out;
+}
+
+.float-btn:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+}
+
+.phone-btn {
+    background: #FF6B6B;
+    color: white;
+}
+
+.location-btn {
+    background: #4ECDC4;
+    color: white;
+}
+
+.contact-btn {
+    background: #FFE66D;
+    color: var(--dark);
+}
+
+/* ===== SECCIONES ===== */
 section {
     padding: 80px 20px;
 }
@@ -204,6 +271,88 @@ section {
     margin-bottom: 3rem;
 }
 
+/* ===== CARRUSEL ===== */
+.carousel {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.carousel-container {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.carousel-slide {
+    display: none;
+    width: 100%;
+}
+
+.carousel-slide.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.carousel-controls {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.carousel-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+/* ===== PRODUCTOS ===== */
 .productos {
     background: linear-gradient(135deg, #F8F9FA 0%, #ECF0F1 100%);
 }
@@ -282,6 +431,7 @@ section {
     font-weight: 500;
 }
 
+/* ===== GALERÍA ===== */
 .galeria {
     background: var(--white);
 }
@@ -336,6 +486,7 @@ section {
     font-weight: 700;
 }
 
+/* ===== SERVICIOS ===== */
 .servicios {
     background: linear-gradient(135deg, var(--primary) 0%, #45B3AA 100%);
 }
@@ -384,6 +535,7 @@ section {
     color: rgba(255, 255, 255, 0.8);
 }
 
+/* ===== CONTACTO ===== */
 .contacto {
     background: linear-gradient(135deg, #F8F9FA 0%, #ECF0F1 100%);
 }
@@ -493,6 +645,33 @@ section {
     transform: translateY(-3px);
 }
 
+/* ===== NOTIFICACIONES ===== */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    z-index: 2000;
+    animation: slideInRight 0.3s ease-out;
+}
+
+.notification.success {
+    background: #27AE60;
+}
+
+.notification.error {
+    background: #E74C3C;
+}
+
+.notification.info {
+    background: var(--primary);
+}
+
+/* ===== FOOTER ===== */
 .footer {
     background: var(--dark);
     color: var(--white);
@@ -504,6 +683,7 @@ section {
     margin: 0.5rem 0;
 }
 
+/* ===== ANIMACIONES ===== */
 @keyframes slideIn {
     from {
         opacity: 0;
@@ -515,11 +695,59 @@ section {
     }
 }
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .fade-in {
     animation: slideIn 0.6s ease-out forwards;
     opacity: 0;
 }
 
+.scroll-animate {
+    animation: slideIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .nav-menu {
         position: absolute;
@@ -536,7 +764,7 @@ section {
     }
 
     .nav-menu.active {
-        max-height: 400px;
+        max-height: 500px;
         padding: 1rem 0;
     }
 
@@ -579,6 +807,22 @@ section {
     section {
         padding: 50px 20px;
     }
+
+    .floating-buttons {
+        bottom: 15px;
+        right: 15px;
+        gap: 10px;
+    }
+
+    .float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .carousel-slide img {
+        height: 250px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -586,8 +830,16 @@ section {
         font-size: 1.8rem;
     }
 
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
     .section-title {
         font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
     }
 
     .galeria-grid {
@@ -605,5 +857,55 @@ section {
 
     .contacto-wrapper {
         grid-template-columns: 1fr;
+    }
+
+    .contacto-form,
+    .contacto-info {
+        padding: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px;
+    }
+
+    .floating-buttons {
+        bottom: 10px;
+        right: 10px;
+        gap: 8px;
+    }
+
+    .float-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .carousel-slide img {
+        height: 200px;
+    }
+
+    .producto-card {
+        margin-bottom: 1rem;
+    }
+
+    section {
+        padding: 40px 15px;
+    }
+
+    .info-item {
+        gap: 1rem;
+    }
+
+    .info-icon {
+        font-size: 1.5rem;
+    }
+
+    .servicio-card {
+        padding: 1.5rem;
+    }
+
+    .servicio-icon {
+        font-size: 2.5rem;
     }
 }
