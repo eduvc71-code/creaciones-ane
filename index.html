@@ -1,283 +1,3792 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creaciones Ane - Diseño de Poleras, Tazas y Sublimación</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <h1>🎨 Creaciones Ane</h1>
-            </div>
-            <div class="nav-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- BOTONES FLOTANTES -->
-    <div class="floating-buttons" id="floatingButtons">
-        <a href="https://wa.me/56912345678?text=Hola%20Creaciones%20Ane" target="_blank" class="float-btn whatsapp-btn" title="WhatsApp">💬</a>
-        <a href="tel:+56912345678" class="float-btn phone-btn" title="Llamar">📞</a>
-        <a href="https://maps.google.com/?q=Tu+ubicación" target="_blank" class="float-btn location-btn" title="Ubicación">📍</a>
-        <a href="#contacto" class="float-btn contact-btn" title="Contacto">✉️</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creaciones Ane – Diseños Únicos y Personalizados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --pink: #FF6FAE;
+      --coral: #E89AB6;
+      --yellow: #FFF7F2;
+      --mint: #12B6B0;
+      --purple: #E9C6F2;
+      --sky: #97E8E0;
+      --dark: #333333;
+      --cream: #FFF7F2;
+      --white: #FFFFFF;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: linear-gradient(135deg, var(--pink), var(--coral));
+      backdrop-filter: none;
+      border-bottom: 3px solid transparent;
+      border-image: linear-gradient(90deg, var(--pink), var(--coral), var(--yellow), var(--mint)) 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      box-shadow: 0 2px 24px rgba(255, 111, 174, .12);
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1rem, 1.4vw, 1.3rem);
+      color: #fff;
+      background: transparent !important;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: #fff !important;
+      font-weight: 900;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .18);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .85rem;
+      color: #fff;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 3px;
+      transition: color .2s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--yellow);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transition: transform .25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--yellow);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-wa {
+      background: #25D366;
+      color: #fff !important;
+      font-weight: 800;
+      font-size: .82rem;
+      padding: .45rem 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      display: none;
+      align-items: center;
+      gap: .4rem;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, .35);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .nav-wa:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, .5);
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: var(--dark);
+      border-radius: 3px;
+      transition: .3s;
+    }
+
+    /* ── HERO ── */
+    #inicio {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #FFE6F0 0%, #FFF7F2 40%, #E6FAF7 100%);
+      display: flex;
+      align-items: center;
+      padding: 80px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-blobs {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: .45;
+      animation: drift 8s ease-in-out infinite alternate;
+    }
+
+    .blob1 {
+      width: 480px;
+      height: 480px;
+      background: var(--pink);
+      top: -120px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .blob2 {
+      width: 380px;
+      height: 380px;
+      background: var(--yellow);
+      top: 30%;
+      right: -80px;
+      animation-delay: 2s;
+    }
+
+    .blob3 {
+      width: 320px;
+      height: 320px;
+      background: var(--mint);
+      bottom: -100px;
+      left: 30%;
+      animation-delay: 4s;
+    }
+
+    @keyframes drift {
+      to {
+        transform: translate(30px, -30px) scale(1.08);
+      }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      width: 100%;
+    }
+
+    .hero-text {}
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255, 111, 174, .12);
+      border: 1.5px solid rgba(255, 111, 174, .3);
+      color: var(--pink);
+      font-weight: 800;
+      font-size: .8rem;
+      padding: .35rem .9rem;
+      border-radius: 50px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      animation: fadeUp .6s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 60%, var(--coral) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: .8rem;
+      animation: fadeUp .7s ease both .1s;
+    }
+
+    .hero-sub {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      color: var(--coral);
+      font-weight: 700;
+      margin-bottom: 1.4rem;
+      animation: fadeUp .7s ease both .2s;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #555;
+      max-width: 440px;
+      margin-bottom: 2rem;
+      animation: fadeUp .7s ease both .3s;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp .7s ease both .4s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink), var(--coral));
+      color: #fff;
+      font-weight: 800;
+      font-size: .95rem;
+      padding: .8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(255, 111, 174, .4);
+      transition: transform .2s, box-shadow .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(255, 111, 174, .55);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--pink);
+      border: 2px solid var(--pink);
+      font-weight: 800;
+      font-size: .95rem;
+      padding: .8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-outline:hover {
+      background: var(--pink);
+      color: #fff;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      z-index: 1;
+      animation: fadeUp .8s ease both .2s;
+    }
+
+    .hero-image-card {
+      background: #fff;
+      border-radius: 32px;
+      padding: 16px;
+      box-shadow: 0 24px 72px rgba(255, 111, 174, .22), 0 4px 16px rgba(0, 0, 0, .08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(255, 111, 174, .08), rgba(233, 198, 242, .08));
+    }
+
+    .hero-img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+      object-fit: cover;
+      max-height: 440px;
+    }
+
+    .hero-float-chip {
+      position: absolute;
+      background: #fff;
+      border-radius: 50px;
+      padding: .5rem 1.2rem;
+      font-weight: 800;
+      font-size: .82rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      animation: float 3s ease-in-out infinite alternate;
+    }
+
+    .chip1 {
+      bottom: -12px;
+      left: -16px;
+      color: var(--pink);
+      animation-delay: 0s;
+    }
+
+    .chip2 {
+      top: -12px;
+      right: -16px;
+      color: var(--purple);
+      animation-delay: 1.5s;
+    }
+
+    @keyframes float {
+      to {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── SECTION HEADERS ── */
+    #inicio {
+      min-height: auto;
+      background: var(--dark);
+      display: block;
+      padding: 64px 0 0;
+    }
+
+    #inicio .hero-blobs,
+    #inicio .hero-inner {
+      display: none;
+    }
+
+    .hero-fusion {
+      background: var(--dark);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .hero-fusion-copy {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      padding: clamp(1.5rem, 3vw, 2.4rem) 5% clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .hero-fusion-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.45rem, 4vw, 3.45rem);
+      line-height: 1.1;
+      color: var(--white);
+      text-shadow: 0 4px 16px rgba(0, 0, 0, .25);
+      margin-bottom: .3rem;
+      animation: fadeUp .7s ease both .1s;
+    }
+
+    .hero-fusion-title span {
+      display: block;
+    }
+
+    .hero-fusion-sub {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1rem, 2.2vw, 1.55rem);
+      color: var(--yellow);
+      font-weight: 400;
+      line-height: 1.25;
+      max-width: min(100%, 760px);
+      margin: 0 auto;
+      padding: 0 12px;
+      animation: fadeUp .7s ease both .2s;
+    }
+
+    .hero-fusion-image {
+      display: flex;
+      justify-content: center;
+      background: var(--dark);
+    }
+
+    .hero-fusion-image img {
+      width: min(100%, 1180px);
+      height: auto;
+      max-height: min(56vh, 520px);
+      object-fit: contain;
+      display: block;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, .28);
+    }
+
+    .hero-fusion-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: clamp(1.1rem, 2.4vw, 1.7rem) 5% clamp(1.6rem, 3vw, 2.4rem);
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-weight: 800;
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .3rem .9rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .tag-pink {
+      background: rgba(255, 111, 174, .12);
+      color: var(--pink);
+    }
+
+    .tag-purple {
+      background: rgba(233, 198, 242, .12);
+      color: var(--purple);
+    }
+
+    .tag-coral {
+      background: rgba(255, 123, 84, .12);
+      color: var(--coral);
+    }
+
+    .tag-mint {
+      background: rgba(18, 182, 176, .12);
+      color: var(--mint);
+    }
+
+    .section-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.35rem, 3.4vw, 2.55rem);
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+
+    .section-title span {
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: #666;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-top: .6rem;
+    }
+
+    .center-head {
+      text-align: center;
+    }
+
+    .center-head .section-sub {
+      margin: .6rem auto 0;
+    }
+
+    /* ── QUIÉN SOY ── */
+    #quien-soy {
+      padding: 90px 5%;
+      background: var(--cream);
+    }
+
+    .about-panel {
+      max-width: 880px;
+      margin: 2.25rem auto 0;
+      padding: clamp(1.5rem, 4vw, 2.4rem);
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid rgba(255, 111, 174, .16);
+      box-shadow: 0 12px 36px rgba(255, 111, 174, .1);
+      text-align: center;
+    }
+
+    .about-panel p {
+      max-width: 680px;
+      margin: 0 auto;
+      color: #666;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    #quien-soy .section-title {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    #quien-soy .section-title span {
+      display: block;
+    }
+
+    /* ── PRODUCTOS ── */
+    #productos {
+      padding: 100px 5%;
+      background: #fff;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .product-card {
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--cream);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .07);
+      transition: transform .3s, box-shadow .3s;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(255, 111, 174, .2);
+    }
+
+    .product-img-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 220px;
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .product-img-wrap.product-img-contain {
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255, 255, 255, .7), transparent 32%),
+        linear-gradient(135deg, #FFE6F0, #FFF7F2 52%, #F8EAFB);
+      padding: .65rem;
+    }
+
+    .product-img-wrap.product-img-contain img {
+      object-fit: contain;
+      border-radius: 16px;
+      filter: drop-shadow(0 12px 22px rgba(26, 26, 46, .14));
+    }
+
+    .product-card:hover .product-img-wrap img {
+      transform: scale(1.07);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: .72rem;
+      font-weight: 900;
+      padding: .3rem .75rem;
+      border-radius: 50px;
+      color: #fff;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .badge-hot {
+      background: var(--pink);
+    }
+
+    .badge-new {
+      background: var(--mint);
+    }
+
+    .badge-top {
+      background: var(--purple);
+    }
+
+    .badge-gift {
+      background: var(--coral);
+    }
+
+    .badge-art {
+      background: var(--sky);
+    }
+
+    .product-body {
+      padding: 1.4rem;
+    }
+
+    .product-icon {
+      font-size: 2rem;
+      margin-bottom: .5rem;
+    }
+
+    .product-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.15rem;
+      margin-bottom: .4rem;
+    }
+
+    .product-desc {
+      font-size: .88rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .product-features {
+      list-style: none;
+      margin-bottom: 1.2rem;
+    }
+
+    .product-features li {
+      font-size: .83rem;
+      color: #555;
+      padding: .2rem 0;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .product-features li::before {
+      content: '✦';
+      color: var(--pink);
+      font-size: .6rem;
+    }
+
+    .btn-consult {
+      width: 100%;
+      display: block;
+      text-align: center;
+      background: linear-gradient(135deg, var(--pink), var(--coral));
+      color: #fff;
+      font-weight: 800;
+      font-size: .88rem;
+      padding: .7rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .btn-consult:hover {
+      opacity: .9;
+      transform: scale(1.02);
+    }
+
+    /* ── GALLERY ── */
+    #nuevos-servicios {
+      padding: 100px 5%;
+      background: linear-gradient(180deg, #fff 0%, #FFE6F0 48%, #F8EAFB 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .new-services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.35rem;
+      margin-top: 3rem;
+    }
+
+    .new-service-card {
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 12px 36px rgba(255, 111, 174, .13);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      border: 1px solid rgba(255, 111, 174, .12);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .new-service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 48px rgba(233, 198, 242, .2);
+    }
+
+    .new-service-img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255, 247, 242, .36), transparent 34%),
+        linear-gradient(135deg, #fff, #FFE6F0);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .new-service-zoom {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: .55rem;
+      background: transparent;
+      cursor: zoom-in;
+      position: relative;
+      display: block;
+      overflow: hidden;
+    }
+
+    .new-service-zoom::before {
+      content: "";
+      position: absolute;
+      inset: -45%;
+      background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .65) 50%, transparent 65%);
+      transform: translateX(-80%) rotate(8deg);
+      transition: transform .7s ease;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .new-service-card:hover .new-service-zoom::before {
+      transform: translateX(80%) rotate(8deg);
+    }
+
+    .new-service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 16px;
+      filter: drop-shadow(0 14px 24px rgba(26, 26, 46, .16));
+      transition: transform .35s ease, filter .35s ease;
+    }
+
+    .new-service-card:hover .new-service-img img {
+      transform: scale(1.025);
+      filter: drop-shadow(0 18px 30px rgba(233, 198, 242, .22));
+    }
+
+    .new-service-zoom-label {
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      z-index: 3;
+      border-radius: 50px;
+      padding: .42rem .8rem;
+      background: rgba(26, 26, 46, .78);
+      color: #fff;
+      font-size: .74rem;
+      font-weight: 900;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .22);
+      opacity: .95;
+    }
+
+    .new-service-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .new-service-kicker {
+      align-self: flex-start;
+      border-radius: 50px;
+      padding: .25rem .7rem;
+      background: rgba(255, 111, 174, .12);
+      color: var(--pink);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+
+    .new-service-title {
+      font-weight: 900;
+      font-size: 1.02rem;
+      line-height: 1.25;
+      margin-bottom: .55rem;
+      color: var(--dark);
+    }
+
+    .new-service-desc {
+      color: #666;
+      font-size: .88rem;
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    .new-service-list {
+      list-style: none;
+      margin: auto 0 1.15rem;
+      display: grid;
+      gap: .35rem;
+    }
+
+    .new-service-list li {
+      color: #555;
+      font-size: .82rem;
+      line-height: 1.35;
+      display: flex;
+      gap: .4rem;
+    }
+
+    .new-service-list li::before {
+      content: "✦";
+      color: var(--coral);
+      font-size: .65rem;
+      line-height: 1.7;
+      flex: 0 0 auto;
+    }
+
+    .new-service-cta {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: .68rem 1rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: #fff;
+      font-size: .84rem;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(255, 111, 174, .24);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .new-service-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(233, 198, 242, .28);
+    }
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: grid;
+      place-items: center;
+      padding: clamp(14px, 3vw, 34px);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 111, 174, .26), transparent 32%),
+        radial-gradient(circle at 80% 80%, rgba(78, 205, 196, .22), transparent 36%),
+        rgba(10, 10, 24, .88);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .28s ease, visibility .28s ease;
+    }
+
+    .image-lightbox.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .image-lightbox-panel {
+      width: min(100%, 1100px);
+      max-height: calc(100vh - 44px);
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
+      gap: .85rem;
+      transform: translateY(18px) scale(.94);
+      transition: transform .35s cubic-bezier(.2, .9, .2, 1);
+    }
+
+    .image-lightbox.open .image-lightbox-panel {
+      transform: translateY(0) scale(1);
+    }
+
+    .image-lightbox-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: #fff;
+    }
+
+    .image-lightbox-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      line-height: 1.1;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, .35);
+    }
+
+    .image-lightbox-close {
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--coral));
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.8rem;
+      line-height: 1;
+      box-shadow: 0 12px 32px rgba(255, 111, 174, .35);
+      transition: transform .2s ease;
+    }
+
+    .image-lightbox-close:hover {
+      transform: rotate(90deg) scale(1.06);
+    }
+
+    .image-lightbox-frame {
+      min-height: 0;
+      border-radius: 24px;
+      padding: clamp(8px, 1.8vw, 16px);
+      background:
+        linear-gradient(#fff, #fff) padding-box,
+        linear-gradient(135deg, var(--pink), var(--yellow), var(--mint), var(--purple)) border-box;
+      border: 3px solid transparent;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, .45);
+      overflow: auto;
+      overscroll-behavior: contain;
+    }
+
+    .image-lightbox-img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      border-radius: 16px;
+    }
+
+    #galeria {
+      padding: 100px 5%;
+      background: linear-gradient(180deg, #fff 0%, var(--cream) 100%);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 220px);
+      grid-auto-rows: 220px;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .gallery-item {
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      cursor: zoom-in;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-row: span 2;
+    }
+
+    .gallery-item:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .gallery-item.gallery-contain {
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255, 255, 255, .72), transparent 34%),
+        linear-gradient(135deg, #FFE6F0, #FFF7F2 54%, #E6FAF7);
+    }
+
+    .gallery-item.gallery-contain img {
+      object-fit: contain;
+      padding: .55rem;
+      filter: drop-shadow(0 12px 24px rgba(26, 26, 46, .16));
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(26, 26, 46, .7) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-label {
+      color: #fff;
+      font-weight: 800;
+      font-size: .88rem;
+    }
+
+    /* ── SOCIAL / VIDEOS ── */
+    #redes {
+      padding: 100px 5%;
+      background: var(--dark);
+      color: #fff;
+    }
+
+    #redes .section-title span {
+      background: linear-gradient(135deg, var(--yellow), var(--coral));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .social-card {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .1);
+      padding: 1.5rem;
+      transition: transform .3s, background .3s;
+    }
+
+    .social-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .social-icon {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .social-name {
+      font-weight: 900;
+      font-size: 1.05rem;
+      margin-bottom: .3rem;
+    }
+
+    .social-handle {
+      color: var(--yellow);
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.1rem;
+      margin-bottom: .8rem;
+    }
+
+    .social-desc {
+      font-size: .85rem;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .btn-social {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .55rem 1.3rem;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: .83rem;
+      text-decoration: none;
+      transition: transform .2s;
+    }
+
+    .btn-social:hover {
+      transform: scale(1.04);
+    }
+
+    .btn-ig {
+      background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
+      color: #fff;
+    }
+
+    .btn-tt {
+      background: #000;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, .2);
+    }
+
+    .btn-fb {
+      background: #1877F2;
+      color: #fff;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      max-width: 980px;
+      margin: 2.4rem auto 3rem;
+    }
+
+    .video-card {
+      overflow: hidden;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .16);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .16);
+    }
+
+    .video-card video {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: 460px;
+      display: block;
+      object-fit: cover;
+      background: rgba(255, 255, 255, .08);
+    }
+
+    .video-caption {
+      padding: .9rem 1rem 1rem;
+      color: rgba(255, 255, 255, .88);
+      font-size: .86rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    /* ── SERVICIOS ── */
+    #servicios {
+      padding: 100px 5%;
+      background: #fff;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      padding: 2rem 1.5rem;
+      border-radius: 22px;
+      background: var(--cream);
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      opacity: 0;
+      transition: opacity .3s;
+      z-index: 0;
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .service-card:hover {
+      color: #fff;
+    }
+
+    .service-card>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card:hover .service-desc {
+      color: rgba(255, 255, 255, .85);
+    }
+
+    .service-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .service-name {
+      font-weight: 900;
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    .service-desc {
+      font-size: .85rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    #contacto {
+      padding: 100px 5%;
+      background: linear-gradient(135deg, #FFE6F0, #F8EAFB);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+
+    .contact-info {}
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: var(--dark);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .contact-item:hover {
+      transform: translateX(6px);
+      box-shadow: 0 8px 32px rgba(255, 111, 174, .2);
+    }
+
+    .contact-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-weight: 900;
+      font-size: .85rem;
+      color: var(--pink);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .2rem;
+    }
+
+    .contact-val {
+      font-size: .95rem;
+      font-weight: 700;
+    }
+
+    .contact-form {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 40px rgba(255, 111, 174, .12);
+    }
+
+    .form-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.5rem;
+      color: var(--pink);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 800;
+      font-size: .82rem;
+      color: #555;
+      margin-bottom: .4rem;
+      letter-spacing: .04em;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: .75rem 1rem;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+      background: var(--cream);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--pink);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-send {
+      width: 100%;
+      padding: .9rem;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: #fff;
+      font-weight: 900;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(255, 111, 174, .4);
+      transition: transform .2s, box-shadow .2s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-send:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(255, 111, 174, .55);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255, 255, 255, .8);
+      padding: 3rem 5% 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      background: linear-gradient(135deg, var(--pink), var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: .5rem;
+    }
+
+    .footer-tagline {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.1rem;
+      color: var(--yellow);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, .6);
+      text-decoration: none;
+      font-size: .85rem;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--pink);
+    }
+
+    .footer-copy {
+      font-size: .8rem;
+      color: rgba(255, 255, 255, .35);
+    }
+
+    /* ── FLOATING BUTTONS ── */
+    .float-buttons {
+      position: fixed;
+      right: 20px;
+      bottom: 24px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      align-items: flex-end;
+    }
+
+    .float-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .22);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+    }
+
+    .float-btn:hover {
+      transform: scale(1.15);
+    }
+
+    .float-btn .tooltip {
+      position: absolute;
+      right: 62px;
+      background: var(--dark);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      white-space: nowrap;
+      padding: .35rem .8rem;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s;
+    }
+
+    .float-btn:hover .tooltip {
+      opacity: 1;
+    }
+
+    .fb-wa {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      width: 62px;
+      height: 62px;
+      font-size: 1.8rem;
+    }
+
+    .fb-call {
+      background: linear-gradient(135deg, var(--sky), #0E9EB0);
+    }
+
+    .fb-map {
+      background: linear-gradient(135deg, var(--coral), #E84393);
+    }
+
+    .fb-mail {
+      background: linear-gradient(135deg, var(--purple), #6B2FBE);
+    }
+
+    /* ── DIVIDER WAVE ── */
+    .whatsapp-popup {
+      position: fixed;
+      right: 96px;
+      bottom: 28px;
+      z-index: 1001;
+      width: min(300px, calc(100vw - 32px));
+      padding: .85rem;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: 0 18px 48px rgba(26, 26, 46, .22);
+      border: 1px solid rgba(37, 211, 102, .22);
+      transform: translateY(18px) scale(.96);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .28s ease, transform .28s ease, visibility .28s ease;
+    }
+
+    .whatsapp-popup.show {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+      animation: waPulse 1.8s ease .35s 2;
+    }
+
+    .whatsapp-popup::after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      bottom: 28px;
+      width: 18px;
+      height: 18px;
+      background: #fff;
+      transform: rotate(45deg);
+      border-top: 1px solid rgba(37, 211, 102, .18);
+      border-right: 1px solid rgba(37, 211, 102, .18);
+    }
+
+    .whatsapp-popup-top {
+      display: flex;
+      align-items: flex-start;
+      gap: .65rem;
+    }
+
+    .whatsapp-popup-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 1.2rem;
+      flex: 0 0 auto;
+      box-shadow: 0 10px 24px rgba(37, 211, 102, .32);
+    }
+
+    .whatsapp-popup-title {
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: .25rem;
+      font-size: .92rem;
+    }
+
+    .whatsapp-popup-text {
+      color: #666;
+      font-size: .8rem;
+      line-height: 1.45;
+    }
+
+    .whatsapp-popup-actions {
+      display: flex;
+      gap: .7rem;
+      align-items: center;
+      margin-top: .9rem;
+    }
+
+    .whatsapp-popup-link {
+      flex: 1;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 38px;
+      padding: .58rem .8rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      text-decoration: none;
+      font-size: .8rem;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(37, 211, 102, .28);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .whatsapp-popup-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(37, 211, 102, .36);
+    }
+
+    .whatsapp-popup-dismiss {
+      width: 36px;
+      height: 36px;
+      border: 0;
+      border-radius: 50%;
+      background: #F4F4F7;
+      color: #777;
+      cursor: pointer;
+      font-size: 1.25rem;
+      line-height: 1;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .whatsapp-popup-dismiss:hover {
+      background: #FFE9F1;
+      color: var(--pink);
+    }
+
+    .admin-entry {
+      position: fixed;
+      left: 16px;
+      bottom: 18px;
+      z-index: 1200;
+      border: 0;
+      border-radius: 999px;
+      min-width: 52px;
+      height: 52px;
+      padding: 0 .95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      background: rgba(26, 26, 46, .92);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      font-size: .8rem;
+      cursor: pointer;
+      box-shadow: 0 12px 32px rgba(26, 26, 46, .24);
+    }
+
+    .admin-entry span {
+      font-size: 1.15rem;
+    }
+
+    .admin-panel {
+      position: fixed;
+      left: 16px;
+      bottom: 86px;
+      z-index: 1300;
+      width: min(380px, calc(100vw - 32px));
+      max-height: min(720px, calc(100dvh - 112px));
+      overflow: auto;
+      padding: 1rem;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(26, 26, 46, .12);
+      box-shadow: 0 18px 54px rgba(26, 26, 46, .28);
+      transform: translateY(16px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .24s ease, transform .24s ease, visibility .24s ease;
+    }
+
+    .admin-panel.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: none;
+    }
+
+    .admin-panel.compact {
+      width: min(260px, calc(100vw - 32px));
+      max-height: min(420px, calc(100dvh - 112px));
+      padding: .75rem;
+    }
+
+    .admin-panel.compact p,
+    .admin-panel.compact .admin-help {
+      display: none;
+    }
+
+    .admin-panel h3 {
+      margin-bottom: .45rem;
+      color: var(--dark);
+      font-size: 1rem;
+    }
+
+    .admin-panel p {
+      color: #666;
+      font-size: .82rem;
+      line-height: 1.45;
+      margin-bottom: .75rem;
+    }
+
+    .admin-panel label {
+      display: block;
+      font-size: .76rem;
+      font-weight: 900;
+      color: #555;
+      margin-bottom: .35rem;
+    }
+
+    .admin-panel input,
+    .admin-panel textarea,
+    .admin-panel select {
+      width: 100%;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      background: #FFF8F0;
+      padding: .65rem .75rem;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      margin-bottom: .65rem;
+    }
+
+    .admin-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+      margin-top: .75rem;
+    }
+
+    .admin-panel.compact .admin-actions {
+      grid-template-columns: 1fr;
+      gap: .38rem;
+    }
+
+    .admin-btn {
+      min-height: 40px;
+      border: 0;
+      border-radius: 999px;
+      padding: .55rem .8rem;
+      background: linear-gradient(135deg, var(--pink), var(--coral));
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(255, 79, 139, .22);
+    }
+
+    .admin-panel.compact .admin-btn {
+      min-height: 34px;
+      padding: .45rem .65rem;
+      font-size: .78rem;
+    }
+
+    .admin-btn.secondary {
+      background: #F3F4F6;
+      color: var(--dark);
+      box-shadow: none;
+    }
+
+    .admin-btn.danger {
+      background: #1A1A2E;
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .admin-btn.full {
+      grid-column: 1 / -1;
+    }
+
+    .admin-status {
+      min-height: 20px;
+      margin-top: .75rem;
+      color: #555;
+      font-size: .8rem;
+      line-height: 1.35;
+    }
+
+    .admin-editing [data-admin-editable="true"] {
+      outline: 2px dashed rgba(255, 79, 139, .45);
+      outline-offset: 3px;
+      cursor: context-menu;
+    }
+
+    .admin-selected {
+      outline: 3px solid rgba(6, 214, 160, .75) !important;
+      outline-offset: 4px !important;
+    }
+
+    .admin-pending {
+      margin-top: .75rem;
+      padding: .65rem;
+      border-radius: 14px;
+      background: #FFF7ED;
+      border: 1px solid rgba(255, 123, 84, .25);
+    }
+
+    .admin-pending[hidden] {
+      display: none;
+    }
+
+    .admin-pending-text {
+      color: #7C2D12;
+      font-size: .78rem;
+      line-height: 1.4;
+      margin-bottom: .55rem;
+      font-weight: 800;
+    }
+
+    .admin-context-menu {
+      position: fixed;
+      z-index: 1400;
+      width: min(320px, calc(100vw - 24px));
+      padding: .9rem;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(26, 26, 46, .12);
+      box-shadow: 0 16px 42px rgba(26, 26, 46, .24);
+      display: none;
+    }
+
+    .admin-context-menu.open {
+      display: block;
+    }
+
+    .admin-context-menu textarea {
+      min-height: 86px;
+      resize: vertical;
+    }
+
+    .admin-color-row {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: .5rem;
+      align-items: center;
+    }
+
+    .admin-help {
+      margin-top: .75rem;
+      padding: .7rem;
+      border-radius: 14px;
+      background: #F8FAFC;
+      color: #666;
+      font-size: .78rem;
+      line-height: 1.45;
+    }
+
+    @keyframes waPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 18px 48px rgba(26, 26, 46, .22);
+      }
+
+      50% {
+        box-shadow: 0 18px 54px rgba(37, 211, 102, .34);
+      }
+    }
+
+    .wave-divider {
+      line-height: 0;
+    }
+
+    .wave-divider svg {
+      display: block;
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (min-width: 1181px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .nav-wa {
+        display: flex;
+      }
+
+      .hamburger {
+        display: none;
+      }
+    }
+
+    @media (orientation: portrait), (pointer: coarse), (max-device-width: 900px) {
+      .nav-links {
+        display: none !important;
+      }
+
+      .nav-links.open {
+        display: flex !important;
+      }
+
+      .nav-wa {
+        display: none !important;
+      }
+
+      .hamburger {
+        display: flex !important;
+      }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 1180px) {
+      nav {
+        padding: 0 4%;
+      }
+
+      .nav-logo {
+        max-width: 46vw;
+        font-size: .95rem;
+        line-height: 1.15;
+      }
+
+      .nav-wa {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: .9rem 5%;
+        gap: .75rem;
+        max-height: calc(100dvh - 64px);
+        overflow-y: auto;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+      }
+
+      .nav-links:not(.open) {
+        display: none !important;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        color: var(--dark) !important;
+        display: block;
+        padding: .35rem 0;
+      }
+
+      .nav-links a:hover {
+        color: var(--pink) !important;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-wrap {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-image-card {
+        max-width: 360px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+
+      .new-services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .video-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 620px;
+      }
+
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(4) {
+        grid-row: auto;
+        grid-column: auto;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      #productos,
+      #nuevos-servicios,
+      #quien-soy,
+      #galeria,
+      #redes,
+      #servicios,
+      #contacto {
+        padding: 64px 5%;
+      }
+
+      .products-grid,
+      .new-services-grid,
+      .gallery-grid,
+      .social-grid,
+      .services-grid,
+      .contact-grid {
+        margin-top: 2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 0 4%;
+      }
+
+      .nav-logo {
+        max-width: 62vw;
+        font-size: .85rem;
+      }
+
+      .hamburger span {
+        background: #fff;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .new-services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+        max-width: min(100%, 300px);
+        margin: 1.8rem auto 2.2rem;
+      }
+
+      .video-card video {
+        max-height: none;
+      }
+
+      .new-service-img {
+        aspect-ratio: 4 / 5;
+      }
+
+      .image-lightbox {
+        padding: 10px;
+      }
+
+      .image-lightbox-panel {
+        max-height: calc(100vh - 20px);
+      }
+
+      .image-lightbox-head {
+        align-items: flex-start;
+      }
+
+      .image-lightbox-close {
+        width: 42px;
+        height: 42px;
+      }
+
+      .image-lightbox-frame {
+        border-radius: 18px;
+      }
+
+      .image-lightbox-img {
+        border-radius: 12px;
+      }
+
+      .float-buttons {
+        right: 12px;
+        bottom: 16px;
+        gap: .45rem;
+      }
+
+      .float-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+      }
+
+      .fb-wa {
+        width: 48px;
+        height: 48px;
+        font-size: 1.35rem;
+      }
+
+      .fb-call,
+      .fb-map,
+      .fb-mail {
+        display: none;
+      }
+
+      .whatsapp-popup {
+        display: none;
+      }
+
+      .whatsapp-popup::after {
+        right: 28px;
+        bottom: -8px;
+        border: 0;
+      }
+
+      .admin-entry {
+        left: 10px;
+        bottom: 14px;
+        min-width: 46px;
+        height: 46px;
+        padding: 0 .7rem;
+        font-size: .72rem;
+      }
+
+      .admin-entry span {
+        font-size: 1rem;
+      }
+
+      .admin-panel {
+        left: 10px;
+        bottom: 68px;
+        width: calc(100vw - 20px);
+        max-height: calc(100dvh - 88px);
+        border-radius: 16px;
+      }
+
+      .admin-actions {
+        grid-template-columns: 1fr;
+      }
+
+      #inicio {
+        padding: 64px 0 0;
+      }
+
+      .hero-fusion-copy {
+        padding: 1.05rem 4.5% .7rem;
+      }
+
+      .hero-fusion-title {
+        max-width: 310px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: clamp(1.12rem, 6vw, 1.55rem);
+      }
+
+      .hero-fusion-sub {
+        max-width: 300px;
+        font-size: clamp(.95rem, 4.5vw, 1.15rem);
+      }
+
+      .hero-fusion-image img {
+        max-height: min(42vh, 300px);
+        width: 100%;
+      }
+
+      .hero-fusion-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: .7rem;
+        padding: .9rem 4.5% 1.25rem;
+      }
+
+      .hero-fusion-actions a {
+        width: min(100%, 260px);
+        justify-content: center;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+      }
+
+      .hero-btns a {
+        text-align: center;
+        justify-content: center;
+      }
+
+      #productos,
+      #nuevos-servicios,
+      #quien-soy,
+      #galeria,
+      #redes,
+      #servicios,
+      #contacto {
+        padding: 52px 4.5%;
+      }
+
+      .section-sub {
+        line-height: 1.55;
+      }
+
+      .marquee-strip {
+        white-space: normal;
+        padding: .65rem 0;
+      }
+
+      .marquee-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: .48rem;
+        padding: 0 .85rem;
+        animation: none;
+      }
+
+      .marquee-inner span {
+        font-size: .72rem;
+        letter-spacing: .02em;
+        max-width: calc(100vw - 32px);
+        white-space: normal;
+        text-align: center;
+      }
+
+      .marquee-inner .sep,
+      .marquee-inner span:nth-child(n+15) {
+        display: none;
+      }
+    }
+
+    /* ── MARQUEE STRIP ── */
+    .marquee-strip {
+      background: linear-gradient(135deg, var(--pink), var(--coral), var(--purple));
+      padding: .75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-inner {
+      display: inline-flex;
+      gap: 2rem;
+      animation: marquee 20s linear infinite;
+    }
+
+    .marquee-inner span {
+      color: #fff;
+      font-weight: 800;
+      font-size: .9rem;
+      letter-spacing: .05em;
+    }
+
+    .marquee-inner .sep {
+      color: rgba(255, 255, 255, .5);
+    }
+
+    @keyframes marquee {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 1180px), (max-device-width: 900px), (orientation: portrait) {
+      #navLinks:not(.open) {
+        display: none !important;
+        visibility: hidden !important;
+      }
+
+      #navLinks.open {
+        display: flex !important;
+        visibility: visible !important;
+      }
+    }
+
+    @media (max-width: 640px), (max-device-width: 640px) {
+      .marquee-strip {
+        white-space: normal;
+        padding: .65rem 0;
+      }
+
+      .marquee-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: .48rem;
+        padding: 0 .85rem;
+        animation: none;
+      }
+
+      .marquee-inner span {
+        max-width: calc(100vw - 32px);
+        white-space: normal;
+        text-align: center;
+        font-size: .72rem;
+        letter-spacing: .02em;
+      }
+
+      .marquee-inner .sep,
+      .marquee-inner span:nth-child(n+15) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#inicio" class="nav-logo">Creaciones Ane</a>
+    <ul class="nav-links" id="navLinks" hidden>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#nuevos-servicios">Nuevos</a></li>
+      <li><a href="#quien-soy">Quién Soy</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#redes">Redes</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/12028936939?text=Hola%20Creaciones%20Ane,%20me%20interesa%20un%20producto!" class="nav-wa"
+      target="_blank" rel="noopener">
+      💬 WhatsApp
+    </a>
+    <div class="hamburger" id="hamburger" role="button" aria-label="Abrir menú" aria-expanded="false" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="inicio">
+    <div class="hero-fusion">
+      <div class="hero-fusion-copy">
+        <h1 class="hero-fusion-title">BIENVENIDO A <span>CREACIONES ANE</span></h1>
+        <p class="hero-fusion-sub">Regala Emoción - Diseños Únicos y Personalizados</p>
+      </div>
+      <div class="hero-fusion-image">
+        <img id="heroImage" src="assets/Creaciones_Anes_con_logo.jpg" alt="Creaciones Ane - Portada">
+      </div>
+      <div class="hero-fusion-actions">
+        <a href="#productos" class="btn-primary">Ver Productos</a>
+        <a href="https://wa.me/12028936939?text=Hola!%20Quiero%20hacer%20un%20pedido%20personalizado"
+          class="btn-outline" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span>Poleras Personalizadas</span><span class="sep">✦</span>
+      <span>Tazas Sublimadas</span><span class="sep">✦</span>
+      <span>Regalos Especiales</span><span class="sep">✦</span>
+      <span>Personalización de Eventos</span><span class="sep">✦</span>
+      <span>Mochilas & Gorras</span><span class="sep">✦</span>
+      <span>Diseños Únicos</span><span class="sep">✦</span>
+      <span>Calidad Premium</span><span class="sep">✦</span>
+      <span>Austin TX</span><span class="sep">✦</span>
+      <span>Poleras Personalizadas</span><span class="sep">✦</span>
+      <span>Tazas Sublimadas</span><span class="sep">✦</span>
+      <span>Regalos Especiales</span><span class="sep">✦</span>
+      <span>Personalización de Eventos</span><span class="sep">✦</span>
+      <span>Mochilas & Gorras</span><span class="sep">✦</span>
+      <span>Diseños Únicos</span><span class="sep">✦</span>
+      <span>Calidad Premium</span><span class="sep">✦</span>
+      <span>Austin TX</span><span class="sep">✦</span>
+    </div>
+  </div>
+
+  <section id="quien-soy">
+    <div class="center-head reveal">
+      <div class="section-tag tag-pink">Quién Soy</div>
+      <h2 class="section-title">Conoce a <span>Creaciones Ane</span></h2>
+      <p class="section-sub">Un espacio reservado para compartir la historia, esencia y reseña de Creaciones Ane.</p>
+    </div>
+    <div class="about-panel reveal">
+      <p>Pronto agregaremos aquí la reseña oficial de Creaciones Ane.</p>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productos">
+    <div class="center-head reveal">
+      <div class="section-tag tag-pink">🛍️ Catálogo</div>
+      <h2 class="section-title">Nuestros <span>Productos</span></h2>
+      <p class="section-sub">Descubre nuestra variedad de artículos personalizados con sublimación de alta calidad.</p>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <img src="assets/catalogo/polera-infantil.jpg"
+            alt="Camiseta infantil personalizada con diseño colorido">
+          <span class="product-badge badge-hot">🔥 Popular</span>
+        </div>
+        <div class="product-body">
+          <div class="product-icon">👕</div>
+          <div class="product-name">Poleras Personalizadas</div>
+          <p class="product-desc">Diseños únicos en poleras de alta calidad. Sublimación full color resistente al
+            lavado.</p>
+          <ul class="product-features">
+            <li>100% Algodón Premium</li>
+            <li>Diseños personalizados</li>
+            <li>Todas las tallas disponibles</li>
+            <li>Colores vibrantes y duraderos</li>
+          </ul>
+          <a href="https://wa.me/12028936939?text=Hola!%20Me%20interesa%20una%20polera%20personalizada"
+            class="btn-consult" target="_blank" rel="noopener">💬 Consultar precio</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img-wrap product-img-contain">
+          <img src="assets/catalogo/taza-floral.jpg" alt="Taza personalizada con flores y fotografía">
+          <span class="product-badge badge-new">✨ Nuevo</span>
+        </div>
+        <div class="product-body">
+          <div class="product-icon">☕</div>
+          <div class="product-name">Tazas Sublimadas</div>
+          <p class="product-desc">Tazas de cerámica con impresión de alta definición, perfectas para regalar.</p>
+          <ul class="product-features">
+            <li>Impresión HD full-color</li>
+            <li>Resistente al lavado</li>
+            <li>Apto microondas</li>
+            <li>Personalizable con fotos y texto</li>
+          </ul>
+          <a href="https://wa.me/12028936939?text=Hola!%20Quiero%20una%20taza%20personalizada" class="btn-consult"
+            target="_blank" rel="noopener">💬 Consultar precio</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <img src="assets/catalogo/gorra-playera.jpg" alt="Gorra y camiseta personalizadas con personajes">
+          <span class="product-badge badge-top">💎 Premium</span>
+        </div>
+        <div class="product-body">
+          <div class="product-icon">🎒</div>
+          <div class="product-name">Artículos Sublimados</div>
+          <p class="product-desc">Mochilas, gorras, bolsas y más. Sublimación de alta durabilidad en múltiples
+            productos.</p>
+          <ul class="product-features">
+            <li>Variedad de artículos</li>
+            <li>Colores ultra vibrantes</li>
+            <li>Durabilidad garantizada</li>
+            <li>Ideal para empresas y eventos</li>
+          </ul>
+          <a href="https://wa.me/12028936939?text=Hola!%20Me%20interesan%20art%C3%ADculos%20sublimados"
+            class="btn-consult" target="_blank" rel="noopener">💬 Consultar precio</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img-wrap">
+          <img src="assets/catalogo/regalo-set.jpg" alt="Set de regalo personalizado con tazas y flores">
+          <span class="product-badge badge-gift">🎁 Especial</span>
+        </div>
+        <div class="product-body">
+          <div class="product-icon">🎁</div>
+          <div class="product-name">Regalos Especiales</div>
+          <p class="product-desc">Sets de regalo personalizados para cumpleaños, aniversarios y ocasiones especiales.
+          </p>
+          <ul class="product-features">
+            <li>Sets completos personalizados</li>
+            <li>Presentación de regalo</li>
+            <li>Perfecto para cualquier ocasión</li>
+            <li>Diseño a tu medida</li>
+          </ul>
+          <a href="https://wa.me/12028936939?text=Hola!%20Quiero%20un%20regalo%20especial%20personalizado"
+            class="btn-consult" target="_blank" rel="noopener">💬 Consultar precio</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-img-wrap product-img-contain">
+          <img src="assets/catalogo/diseno-taza.jpg" alt="Diseño artístico personalizado con inicial en taza">
+          <span class="product-badge badge-art">🎨 Arte</span>
+        </div>
+        <div class="product-body">
+          <div class="product-icon">🎨</div>
+          <div class="product-name">Diseños Artísticos</div>
+          <p class="product-desc">Diseños únicos creados especialmente para ti. Ilustraciones, logos y arte
+            personalizado.</p>
+          <ul class="product-features">
+            <li>Diseño original y exclusivo</li>
+            <li>Múltiples estilos disponibles</li>
+            <li>Revisiones incluidas</li>
+            <li>Archivo digital entregado</li>
+          </ul>
+          <a href="https://wa.me/12028936939?text=Hola!%20Quiero%20un%20dise%C3%B1o%20personalizado" class="btn-consult"
+            target="_blank" rel="noopener">💬 Consultar precio</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal"
+        style="background: linear-gradient(135deg, #FFE6F0, #F8EAFB); border: 2px dashed rgba(255,111,174,.3); display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:360px; text-align:center; padding:2rem;">
+        <div style="font-size:3rem; margin-bottom:1rem;">✨</div>
+        <div class="product-name" style="font-size:1.2rem; margin-bottom:.8rem; color:var(--purple);">¿Tienes algo en
+          mente?</div>
+        <p style="color:#666; font-size:.9rem; line-height:1.6; margin-bottom:1.5rem;">No encuentras lo que buscas?
+          Cuéntanos tu idea y lo creamos para ti.</p>
+        <a href="https://wa.me/12028936939?text=Hola!%20Tengo%20una%20idea%20para%20un%20producto%20personalizado"
+          class="btn-primary" style="display:inline-flex;" target="_blank" rel="noopener">💬 Cuéntame tu idea</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NUEVOS SERVICIOS -->
+  <section id="nuevos-servicios">
+    <div class="center-head reveal">
+      <div class="section-tag tag-coral">Nuevas experiencias</div>
+      <h2 class="section-title">Más formas de <span>crear contigo</span></h2>
+      <p class="section-sub">Creaciones Ane suma servicios para eventos, marcas y personas que quieren aprender,
+        emprender o transformar una ocasión especial en un recuerdo único.</p>
     </div>
 
-    <!-- PORTADA HERO CON IMAGEN -->
-    <section id="inicio" class="hero">
-        <div class="hero-image-container">
-            <img id="heroImage" src="https://github.com/eduvc71-code/creaciones-ane/raw/main/Captura%20de%20pantalla%202026-04-05%20034339.png" alt="Creaciones Ane Portada" class="hero-image">
+    <div class="new-services-grid">
+      <article class="new-service-card reveal">
+        <div class="new-service-img">
+          <button class="new-service-zoom" type="button"
+            data-lightbox-src="assets/servicios-nuevos/taller-sublimacion.jpeg"
+            data-lightbox-title="Taller de sublimación">
+            <img src="assets/servicios-nuevos/taller-sublimacion.jpeg" alt="Taller de sublimación Creaciones Ane">
+            <span class="new-service-zoom-label">Ampliar</span>
+          </button>
         </div>
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1 class="hero-title fade-in">Bienvenido a Creaciones Ane</h1>
-                <p class="hero-subtitle fade-in">Regala Emoción - Diseños Únicos y Personalizados</p>
-                <button class="btn btn-primary fade-in" onclick="document.getElementById('productos').scrollIntoView({behavior: 'smooth'})">Ver Productos</button>
-            </div>
+        <div class="new-service-body">
+          <div class="new-service-kicker">Aprende y emprende</div>
+          <h3 class="new-service-title">Taller de sublimación</h3>
+          <p class="new-service-desc">Clase práctica para aprender a personalizar tazas, camisetas, vasos, souvenirs y
+            más productos con técnicas de sublimación.</p>
+          <ul class="new-service-list">
+            <li>Técnicas, equipos y materiales</li>
+            <li>Diseño e impresión de proyectos</li>
+            <li>Asesoría para emprender desde casa</li>
+          </ul>
+          <a class="new-service-cta"
+            href="https://wa.me/12028936939?text=Hola%20Creaciones%20Ane!%20Quiero%20informacion%20del%20taller%20de%20sublimacion"
+            target="_blank" rel="noopener">Reservar cupo</a>
         </div>
-    </section>
+      </article>
 
-    <!-- CARRUSEL DE PRODUCTOS -->
-    <section class="carousel" id="carousel">
-        <div class="carousel-container">
-            <div class="carousel-slide active">
-                <img src="https://via.placeholder.com/1200x400?text=Poleras+Personalizadas" alt="Poleras">
-            </div>
-            <div class="carousel-slide">
-                <img src="https://via.placeholder.com/1200x400?text=Tazas+Sublimadas" alt="Tazas">
-            </div>
-            <div class="carousel-slide">
-                <img src="https://via.placeholder.com/1200x400?text=Articulos+Sublimados" alt="Sublimación">
-            </div>
-            <button class="carousel-button carousel-prev" onclick="changeSlide(-1)">❮</button>
-            <button class="carousel-button carousel-next" onclick="changeSlide(1)">❯</button>
-            <div class="carousel-controls">
-                <span class="carousel-dot active" onclick="currentSlide(0)"></span>
-                <span class="carousel-dot" onclick="currentSlide(1)"></span>
-                <span class="carousel-dot" onclick="currentSlide(2)"></span>
-            </div>
+      <article class="new-service-card reveal">
+        <div class="new-service-img">
+          <button class="new-service-zoom" type="button"
+            data-lightbox-src="assets/servicios-nuevos/recuerdos-eventos.jpeg"
+            data-lightbox-title="Recuerdos al instante">
+            <img src="assets/servicios-nuevos/recuerdos-eventos.jpeg"
+              alt="Recuerdos personalizados al instante para eventos">
+            <span class="new-service-zoom-label">Ampliar</span>
+          </button>
         </div>
-    </section>
-
-    <!-- PRODUCTOS -->
-    <section id="productos" class="productos">
-        <div class="container">
-            <h2 class="section-title fade-in">Nuestros Productos</h2>
-            <p class="section-subtitle fade-in">Descubre nuestra variedad de diseños personalizados</p>
-            
-            <div class="productos-grid">
-                <div class="producto-card fade-in">
-                    <div class="producto-imagen">
-                        <img src="https://via.placeholder.com/300x300?text=Poleras" alt="Poleras">
-                        <span class="badge">Popular</span>
-                    </div>
-                    <div class="producto-contenido">
-                        <h3>Poleras Personalizadas</h3>
-                        <p>Diseños únicos en poleras de alta calidad. Variedad de colores y tallas.</p>
-                        <ul class="caracteristicas">
-                            <li>✓ 100% Algodón Premium</li>
-                            <li>✓ Diseños Personalizados</li>
-                            <li>✓ Envío Incluido</li>
-                        </ul>
-                        <button class="btn btn-secondary" onclick="contactarProducto('Poleras Personalizadas')">Consultar</button>
-                    </div>
-                </div>
-
-                <div class="producto-card fade-in">
-                    <div class="producto-imagen">
-                        <img src="https://via.placeholder.com/300x300?text=Tazas" alt="Tazas">
-                        <span class="badge">Nuevo</span>
-                    </div>
-                    <div class="producto-contenido">
-                        <h3>Tazas Sublimadas</h3>
-                        <p>Tazas de cerámica con impresiones de alta definición.</p>
-                        <ul class="caracteristicas">
-                            <li>✓ Impresión HD</li>
-                            <li>✓ Resistente al Lavado</li>
-                            <li>✓ Apto Microondas</li>
-                        </ul>
-                        <button class="btn btn-secondary" onclick="contactarProducto('Tazas Sublimadas')">Consultar</button>
-                    </div>
-                </div>
-
-                <div class="producto-card fade-in">
-                    <div class="producto-imagen">
-                        <img src="https://via.placeholder.com/300x300?text=Sublimacion" alt="Sublimación">
-                        <span class="badge">Premium</span>
-                    </div>
-                    <div class="producto-contenido">
-                        <h3>Artículos Sublimados</h3>
-                        <p>Mochilas, gorras, bolsas y más con sublimación de calidad.</p>
-                        <ul class="caracteristicas">
-                            <li>✓ Múltiples Productos</li>
-                            <li>✓ Colores Vibrantes</li>
-                            <li>✓ Durabilidad Garantizada</li>
-                        </ul>
-                        <button class="btn btn-secondary" onclick="contactarProducto('Artículos Sublimados')">Consultar</button>
-                    </div>
-                </div>
-            </div>
+        <div class="new-service-body">
+          <div class="new-service-kicker">Eventos especiales</div>
+          <h3 class="new-service-title">Recuerdos al instante</h3>
+          <p class="new-service-desc">Llevamos la experiencia a tu evento: tomamos la foto, la personalizamos y
+            entregamos recuerdos el mismo día.</p>
+          <ul class="new-service-list">
+            <li>Bodas, quinceañeras y cumpleaños</li>
+            <li>Tazas, totebags, llaveros y más</li>
+            <li>Detalles rápidos, útiles y personalizados</li>
+          </ul>
+          <a class="new-service-cta"
+            href="https://wa.me/12028936939?text=Hola%20Creaciones%20Ane!%20Quiero%20recuerdos%20personalizados%20para%20mi%20evento"
+            target="_blank" rel="noopener">Reservar fecha</a>
         </div>
-    </section>
+      </article>
 
-    <!-- GALERÍA -->
-    <section id="galeria" class="galeria">
-        <div class="container">
-            <h2 class="section-title fade-in">Galería de Diseños</h2>
-            <p class="section-subtitle fade-in">Trabajos realizados por nuestro equipo</p>
-            
-            <div class="galeria-grid">
-                <div class="galeria-item fade-in">
-                    <img src="https://via.placeholder.com/250x250?text=Diseño+1" alt="Diseño 1">
-                    <div class="galeria-overlay"><p>Polera Diseño Floral</p></div>
-                </div>
-                <div class="galeria-item fade-in">
-                    <img src="https://via.placeholder.com/250x250?text=Diseño+2" alt="Diseño 2">
-                    <div class="galeria-overlay"><p>Taza Personalizada</p></div>
-                </div>
-                <div class="galeria-item fade-in">
-                    <img src="https://via.placeholder.com/250x250?text=Diseño+3" alt="Diseño 3">
-                    <div class="galeria-overlay"><p>Mochila Sublimada</p></div>
-                </div>
-                <div class="galeria-item fade-in">
-                    <img src="https://via.placeholder.com/250x250?text=Diseño+4" alt="Diseño 4">
-                    <div class="galeria-overlay"><p>Gorra Personalizada</p></div>
-                </div>
-                <div class="galeria-item fade-in">
-                    <img src="https://via.placeholder.com/250x250?text=Diseño+5" alt="Diseño 5">
-                    <div class="galeria-overlay"><p>Bolsa Diseño Único</p></div>
-                </div>
-                <div class="galeria-item fade-in">
-                    <img src="https://via.placeholder.com/250x250?text=Diseño+6" alt="Diseño 6">
-                    <div class="galeria-overlay"><p>Taza Colección Special</p></div>
-                </div>
-            </div>
+      <article class="new-service-card reveal">
+        <div class="new-service-img">
+          <button class="new-service-zoom" type="button"
+            data-lightbox-src="assets/servicios-nuevos/personalizacion-eventos.jpeg"
+            data-lightbox-title="Personalización por ocasión">
+            <img src="assets/servicios-nuevos/personalizacion-eventos.jpeg"
+              alt="Artículos personalizados para eventos y empresas">
+            <span class="new-service-zoom-label">Ampliar</span>
+          </button>
         </div>
-    </section>
-
-    <!-- SERVICIOS -->
-    <section id="servicios" class="servicios">
-        <div class="container">
-            <h2 class="section-title fade-in">¿Por qué elegirnos?</h2>
-            
-            <div class="servicios-grid">
-                <div class="servicio-card fade-in">
-                    <div class="servicio-icon">🎨</div>
-                    <h3>Diseño Personalizado</h3>
-                    <p>Diseños únicos adaptados a tus necesidades.</p>
-                </div>
-                <div class="servicio-card fade-in">
-                    <div class="servicio-icon">✨</div>
-                    <h3>Calidad Premium</h3>
-                    <p>Materiales de la más alta calidad.</p>
-                </div>
-                <div class="servicio-card fade-in">
-                    <div class="servicio-icon">⚡</div>
-                    <h3>Entrega Rápida</h3>
-                    <p>Procesos ágiles y entregas en tiempo récord.</p>
-                </div>
-                <div class="servicio-card fade-in">
-                    <div class="servicio-icon">💰</div>
-                    <h3>Precios Competitivos</h3>
-                    <p>Las mejores ofertas del mercado.</p>
-                </div>
-                <div class="servicio-card fade-in">
-                    <div class="servicio-icon">🎁</div>
-                    <h3>Atención al Cliente</h3>
-                    <p>Servicio excepcional garantizado.</p>
-                </div>
-                <div class="servicio-card fade-in">
-                    <div class="servicio-icon">🚚</div>
-                    <h3>Envíos Confiables</h3>
-                    <p>Embalaje profesional y seguro.</p>
-                </div>
-            </div>
+        <div class="new-service-body">
+          <div class="new-service-kicker">Eventos y empresas</div>
+          <h3 class="new-service-title">Personalización por ocasión</h3>
+          <p class="new-service-desc">Creamos artículos personalizados para bodas, XV años, bautizos, cumpleaños,
+            uniformes, souvenirs y regalos corporativos.</p>
+          <ul class="new-service-list">
+            <li>Diseños exclusivos y atención personalizada</li>
+            <li>Precios por cantidad</li>
+            <li>Detalles para marcas, equipos y celebraciones</li>
+          </ul>
+          <a class="new-service-cta"
+            href="https://wa.me/12028936939?text=Hola%20Creaciones%20Ane!%20Quiero%20cotizar%20articulos%20personalizados"
+            target="_blank" rel="noopener">Cotizar ahora</a>
         </div>
-    </section>
+      </article>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="contacto">
-        <div class="container">
-            <h2 class="section-title fade-in">Ponte en Contacto</h2>
-            <p class="section-subtitle fade-in">¿Tienes preguntas? Nos encantaría escucharte</p>
-            
-            <div class="contacto-wrapper">
-                <form class="contacto-form fade-in" id="contactForm">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo</label>
-                        <input type="text" id="nombre" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" placeholder="tu@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="asunto">Asunto</label>
-                        <input type="text" id="asunto" placeholder="¿En qué te podemos ayudar?" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" rows="5" placeholder="Cuéntanos tu consulta..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje</button>
-                </form>
-
-                <div class="contacto-info fade-in">
-                    <div class="info-item">
-                        <div class="info-icon">📱</div>
-                        <div>
-                            <h4>Teléfono</h4>
-                            <p>+56 9 1234 5678</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">📧</div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@creacionesane.com</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">📍</div>
-                        <div>
-                            <h4>Ubicación</h4>
-                            <p>Tu Ciudad, Tu País</p>
-                        </div>
-                    </div>
-                    <div class="redes-sociales">
-                        <h4>Síguenos</h4>
-                        <div class="social-links">
-                            <a href="#" class="social-icon">f</a>
-                            <a href="#" class="social-icon">📷</a>
-                            <a href="#" class="social-icon">📘</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <article class="new-service-card reveal">
+        <div class="new-service-img">
+          <button class="new-service-zoom" type="button"
+            data-lightbox-src="assets/servicios-nuevos/stickers-negocio.jpeg"
+            data-lightbox-title="Stickers para tu negocio">
+            <img src="assets/servicios-nuevos/stickers-negocio.jpeg" alt="Stickers personalizados para negocios">
+            <span class="new-service-zoom-label">Ampliar</span>
+          </button>
         </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Creaciones Ane. Todos los derechos reservados.</p>
-            <p>Regala Emoción - Diseño y sublimación de calidad premium</p>
+        <div class="new-service-body">
+          <div class="new-service-kicker">Marca y empaque</div>
+          <h3 class="new-service-title">Stickers para tu negocio</h3>
+          <p class="new-service-desc">Stickers personalizados para empaques, productos artesanales, eventos, recuerdos
+            y detalles especiales.</p>
+          <ul class="new-service-list">
+            <li>Logo, mensajes y diseños únicos</li>
+            <li>Impresión nítida y colores vibrantes</li>
+            <li>Variedad de tamaños y formas</li>
+          </ul>
+          <a class="new-service-cta"
+            href="https://wa.me/12028936939?text=Hola%20Creaciones%20Ane!%20Quiero%20ordenar%20stickers%20personalizados"
+            target="_blank" rel="noopener">Ordenar stickers</a>
         </div>
-    </footer>
+      </article>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- GALERÍA -->
+  <section id="galeria">
+    <div class="center-head reveal">
+      <div class="section-tag tag-purple">🖼️ Portafolio</div>
+      <h2 class="section-title">Galería de <span>Diseños</span></h2>
+      <p class="section-sub">Trabajos realizados con amor y creatividad para nuestros clientes.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="assets/catalogo/regalo-set.jpg" alt="Set de regalo personalizado con tazas">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Set de regalo personalizado 🎁</div>
+        </div>
+      </div>
+      <div class="gallery-item gallery-contain">
+        <img src="assets/catalogo/taza-floral.jpg" alt="Taza floral personalizada">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Taza floral personalizada ☕</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/catalogo/polera-infantil.jpg" alt="Camiseta infantil personalizada">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Camiseta personalizada 👕</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/catalogo/bolso-vivi.jpg" alt="Bolso personalizado con nombre">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Bolso personalizado 👜</div>
+        </div>
+      </div>
+      <div class="gallery-item gallery-contain">
+        <img src="assets/catalogo/tumbler-morado.jpg" alt="Vaso tumbler personalizado">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Vaso tumbler personalizado 🥤</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/catalogo/body-bebe.jpg" alt="Conjunto de bebé personalizado">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Conjunto de bebé personalizado 🍼</div>
+        </div>
+      </div>
+      <div class="gallery-item gallery-contain">
+        <img src="assets/catalogo/llavero-mabby.jpg" alt="Llavero personalizado con nombre">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Llavero con nombre ✨</div>
+        </div>
+      </div>
+      <div class="gallery-item gallery-contain">
+        <img src="assets/catalogo/cosmetiquera-sarah.jpg" alt="Cosmetiquera personalizada con nombre">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Cosmetiquera personalizada 🧵</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/catalogo/termos-pareja.jpg" alt="Termos personalizados para pareja">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Termos para pareja 💕</div>
+        </div>
+      </div>
+      <div class="gallery-item gallery-contain">
+        <img src="assets/catalogo/taza-amanda.jpg" alt="Taza personalizada con flores">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Taza con nombre 🌸</div>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/catalogo/camisetas-bebe.jpg" alt="Camisetas de bebé personalizadas">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Camisetas de bebé personalizadas 👶</div>
+        </div>
+      </div>
+      <div class="gallery-item gallery-contain">
+        <img src="assets/catalogo/flyer-enamora.jpg" alt="Promoción de regalos personalizados">
+        <div class="gallery-overlay">
+          <div class="gallery-label">Ideas para regalar 💝</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+      <a href="https://www.instagram.com/creaciones_ane/" class="btn-primary" target="_blank" rel="noopener"
+        style="display:inline-flex;">📸 Ver más en Instagram</a>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider" style="background:#fff;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60">
+      <path fill="#333333" d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" />
+    </svg>
+  </div>
+
+  <!-- REDES -->
+  <section id="redes">
+    <div class="center-head reveal">
+      <div class="section-tag" style="background:rgba(255,209,102,.15);color:var(--yellow);">📱 Síguenos</div>
+      <h2 class="section-title">Encuéntranos en <span>Redes Sociales</span></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.65);">Sigue nuestro proceso creativo, inspiración y
+        novedades en todas nuestras plataformas.</p>
+    </div>
+    <div class="video-grid reveal">
+      <article class="video-card">
+        <video controls muted playsinline preload="metadata" poster="assets/catalogo/vaso-love.jpg">
+          <source src="videos/VIDEO-2026-05-17-18-10-38.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+        </video>
+        <div class="video-caption">Proceso creativo y acabados de productos personalizados</div>
+      </article>
+      <article class="video-card">
+        <video controls muted playsinline preload="metadata" poster="assets/catalogo/regalo-set.jpg">
+          <source src="videos/VIDEO-2026-05-17-18-10-39.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+        </video>
+        <div class="video-caption">Detalles listos para entregar y compartir en redes</div>
+      </article>
+      <article class="video-card">
+        <video controls muted playsinline preload="metadata" poster="assets/catalogo/flyer-enamora.jpg">
+          <source src="videos/VIDEO-2026-05-17-18-10-40.mp4" type="video/mp4">
+          Tu navegador no puede reproducir este video.
+        </video>
+        <div class="video-caption">Ideas personalizadas para regalos y eventos especiales</div>
+      </article>
+    </div>
+    <div class="social-grid">
+      <div class="social-card reveal">
+        <div class="social-icon">📸</div>
+        <div class="social-name">Instagram</div>
+        <div class="social-handle">@creaciones_ane</div>
+        <p class="social-desc">Descubre nuestros últimos diseños, procesos creativos y productos terminados.</p>
+        <a href="https://www.instagram.com/creaciones_ane/" class="btn-social btn-ig" target="_blank" rel="noopener">✨
+          Ver perfil</a>
+      </div>
+      <div class="social-card reveal">
+        <div class="social-icon">🎵</div>
+        <div class="social-name">TikTok</div>
+        <div class="social-handle">@creacionesane</div>
+        <p class="social-desc">Videos de procesos de sublimación, unboxings y productos personalizados en acción.</p>
+        <a href="https://www.tiktok.com/@creacionesane" class="btn-social btn-tt" target="_blank" rel="noopener">▶ Ver
+          TikTok</a>
+      </div>
+      <div class="social-card reveal">
+        <div class="social-icon">👍</div>
+        <div class="social-name">Facebook</div>
+        <div class="social-handle">creacionesanelissa</div>
+        <p class="social-desc">Encuentra nuestros productos, promociones y conecta con nuestra comunidad.</p>
+        <a href="https://www.facebook.com/creacionesanelissa" class="btn-social btn-fb" target="_blank" rel="noopener">f
+          Ver página</a>
+      </div>
+      <div class="social-card reveal"
+        style="background: linear-gradient(135deg, rgba(37,211,102,.15), rgba(18,140,126,.15)); border-color:rgba(37,211,102,.3);">
+        <div class="social-icon">💬</div>
+        <div class="social-name">WhatsApp</div>
+        <div class="social-handle">+1 202-893-6939</div>
+        <p class="social-desc">¿Lista para hacer tu pedido? Escríbenos y te ayudamos con tu diseño personalizado.</p>
+        <a href="https://wa.me/12028936939?text=Hola%20Creaciones%20Ane!%20Me%20interesa%20hacer%20un%20pedido"
+          class="btn-social" style="background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;" target="_blank"
+          rel="noopener">💬
+          Escribir ahora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <div class="wave-divider" style="background:#333333;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60">
+      <path fill="#ffffff" d="M0,30 C360,0 1080,60 1440,30 L1440,60 L0,60 Z" />
+    </svg>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="center-head reveal">
+      <div class="section-tag tag-mint">⭐ Beneficios</div>
+      <h2 class="section-title">¿Por qué <span>elegirnos</span>?</h2>
+      <p class="section-sub">Nos dedicamos a hacer cada pieza con amor, creatividad y la más alta calidad.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-emoji">🎨</span>
+        <div class="service-name">Diseño Personalizado</div>
+        <p class="service-desc">Cada diseño es único y adaptado exactamente a lo que sueñas.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-emoji">🎉</span>
+        <div class="service-name">Personalización de Eventos</div>
+        <p class="service-desc">Detalles, recuerdos y artículos personalizados para celebraciones y eventos especiales.
+        </p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-emoji">✨</span>
+        <div class="service-name">Calidad Premium</div>
+        <p class="service-desc">Materiales de la más alta calidad con sublimación de última generación.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-emoji">⚡</span>
+        <div class="service-name">Entrega Rápida</div>
+        <p class="service-desc">Procesos ágiles para que recibas tus productos en el menor tiempo posible.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-emoji">💰</span>
+        <div class="service-name">Precios Justos</div>
+        <p class="service-desc">Las mejores ofertas del mercado sin comprometer la calidad.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-emoji">💖</span>
+        <div class="service-name">Hecho con Amor</div>
+        <p class="service-desc">Cada pieza se crea con dedicación y pasión por lo que hacemos.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-emoji">🚚</span>
+        <div class="service-name">Envíos Confiables</div>
+        <p class="service-desc">Embalaje profesional y seguro para que tus productos lleguen perfectos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="center-head reveal">
+      <div class="section-tag tag-coral">📬 Contáctanos</div>
+      <h2 class="section-title">Ponte en <span>Contacto</span></h2>
+      <p class="section-sub">¿Lista para crear algo especial? Nos encantaría escuchar tu idea.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <a href="https://wa.me/12028936939?text=Hola%20Creaciones%20Ane!" class="contact-item" target="_blank"
+          rel="noopener">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-val">+1 202-893-6939</div>
+            <div style="font-size:.82rem;color:#888;margin-top:.2rem;">¡Respuesta rápida garantizada!</div>
+          </div>
+        </a>
+        <a href="mailto:andreita1_f@hotmail.com" class="contact-item">
+          <div class="contact-icon">📧</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-val">andreita1_f@hotmail.com</div>
+          </div>
+        </a>
+        <a href="https://maps.google.com/?q=Austin,TX+78744" class="contact-item" target="_blank" rel="noopener">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Ubicación</div>
+            <div class="contact-val">Austin, TX 78744</div>
+            <div style="font-size:.82rem;color:#888;margin-top:.2rem;">United States</div>
+          </div>
+        </a>
+        <a href="tel:+12028936939" class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Teléfono</div>
+            <div class="contact-val">+1 202-893-6939</div>
+          </div>
+        </a>
+
+        <div
+          style="margin-top:1.5rem; padding:1.5rem; background:#fff; border-radius:16px; box-shadow:0 4px 20px rgba(0,0,0,.07);">
+          <p style="font-weight:800; margin-bottom:1rem; color:var(--dark);">Síguenos 💕</p>
+          <div style="display:flex; gap:.75rem; flex-wrap:wrap;">
+            <a href="https://www.instagram.com/creaciones_ane/" class="btn-social btn-ig" style="font-size:.8rem;"
+              target="_blank" rel="noopener">📸 Instagram</a>
+            <a href="https://www.tiktok.com/@anes.creations" class="btn-social btn-tt" style="font-size:.8rem;"
+              target="_blank" rel="noopener">🎵 TikTok</a>
+            <a href="https://www.facebook.com/creacionesanelissa" class="btn-social btn-fb" style="font-size:.8rem;"
+              target="_blank" rel="noopener">f Facebook</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <div class="form-title">💌 Envíanos un mensaje</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>👤 Nombre</label>
+            <input type="text" placeholder="Tu nombre" id="fname">
+          </div>
+          <div class="form-group">
+            <label>📧 Email</label>
+            <input type="email" placeholder="tu@email.com" id="femail">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>🛍️ ¿Qué producto te interesa?</label>
+          <select id="fproduct">
+            <option value="">Selecciona un producto...</option>
+            <option>Polera Personalizada</option>
+            <option>Taza Sublimada</option>
+            <option>Artículos Sublimados</option>
+            <option>Regalo Especial</option>
+            <option>Diseño Artístico</option>
+            <option>Otro / Consulta general</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>💬 Cuéntame tu idea</label>
+          <textarea id="fmsg" placeholder="Describe tu diseño ideal, cantidad, colores, ocasión especial..."></textarea>
+        </div>
+        <button class="btn-send" onclick="sendWhatsApp()">
+          💬 Enviar por WhatsApp
+        </button>
+        <p style="text-align:center; font-size:.8rem; color:#999; margin-top:.8rem;">
+          Tu mensaje se enviará directamente a nuestro WhatsApp 🌸
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Creaciones Ane</div>
+    <div class="footer-tagline">Regala Emoción — Diseños Únicos y Personalizados</div>
+    <nav class="footer-links">
+      <a href="#productos">Productos</a>
+      <a href="#nuevos-servicios">Nuevos Servicios</a>
+      <a href="#quien-soy">Quién Soy</a>
+      <a href="#galeria">Galería</a>
+      <a href="#redes">Redes Sociales</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <p class="footer-copy">© 2026 Creaciones Ane · Austin, TX 78744, United States · Hecho con 💖</p>
+  </footer>
+
+  <!-- FLOATING BUTTONS -->
+  <div class="float-buttons">
+    <a href="https://wa.me/12028936939?text=Hola%20Creaciones%20Ane!" class="float-btn fb-wa" target="_blank"
+      rel="noopener">
+      <span class="tooltip">WhatsApp</span>💬
+    </a>
+    <a href="tel:+12028936939" class="float-btn fb-call">
+      <span class="tooltip">Llamar</span>📞
+    </a>
+    <a href="https://maps.google.com/?q=Austin,TX+78744" class="float-btn fb-map" target="_blank" rel="noopener">
+      <span class="tooltip">Ubicación</span>📍
+    </a>
+    <a href="mailto:andreita1_f@hotmail.com" class="float-btn fb-mail">
+      <span class="tooltip">Email</span>✉️
+    </a>
+  </div>
+
+  <div class="whatsapp-popup" id="whatsappPopup" aria-live="polite">
+    <div class="whatsapp-popup-top">
+      <div class="whatsapp-popup-icon">💬</div>
+      <div>
+        <div class="whatsapp-popup-title">¿Quieres personalizar algo especial?</div>
+        <div class="whatsapp-popup-text">Cuéntanos tu idea por WhatsApp y te ayudamos a cotizar rápido.</div>
+      </div>
+    </div>
+    <div class="whatsapp-popup-actions">
+      <a class="whatsapp-popup-link"
+        href="https://wa.me/12028936939?text=Hola%20Creaciones%20Ane!%20Quiero%20hacer%20una%20consulta%20sobre%20un%20producto%20personalizado"
+        target="_blank" rel="noopener">Escribir ahora</a>
+      <button class="whatsapp-popup-dismiss" type="button" aria-label="Cerrar aviso de WhatsApp">×</button>
+    </div>
+  </div>
+
+  <button class="admin-entry" id="adminEntry" type="button" title="Doble click para administrar">
+    <span>⚙️</span> Admin
+  </button>
+
+  <div class="admin-panel" id="adminPanel" aria-hidden="true">
+    <div id="adminLogin">
+      <h3>Modo Admin</h3>
+      <p>Haz cambios locales para preparar una versión de publicación.</p>
+      <label for="adminPassword">Contraseña</label>
+      <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Contraseña">
+      <div class="admin-actions">
+        <button class="admin-btn" id="adminLoginBtn" type="button">Entrar</button>
+        <button class="admin-btn secondary" id="adminCloseBtn" type="button">Cerrar</button>
+      </div>
+    </div>
+    <div id="adminTools" hidden>
+      <h3>Herramientas Admin</h3>
+      <p>Para imagen o video usa el botón y luego doble click en el archivo exacto. Para texto, selecciona el texto con click.</p>
+      <div class="admin-actions">
+        <button class="admin-btn secondary full" id="adminPickRoot" type="button">Elegir carpeta raíz</button>
+        <button class="admin-btn" id="adminToggleText" type="button">Editar textos</button>
+        <button class="admin-btn" id="adminEditMedia" type="button">Editar JPG/MP4</button>
+        <button class="admin-btn secondary" id="adminExitEdit" type="button">Salir edición</button>
+        <button class="admin-btn secondary" id="adminCompactPanel" type="button">Reducir panel</button>
+        <button class="admin-btn secondary" id="adminExpandPanel" type="button">Expandir panel</button>
+        <button class="admin-btn" id="adminSavePage" type="button">Guardar index.html</button>
+        <button class="admin-btn secondary" id="adminExportZip" type="button">Comprimir carpeta</button>
+        <button class="admin-btn danger full" id="adminLogoutBtn" type="button">Salir Admin</button>
+      </div>
+      <div class="admin-help">
+        Las imágenes o videos nuevos se guardan en <strong>fotos_mpg</strong> cuando eliges la carpeta raíz. Si el
+        navegador no permite acceso a carpetas, usa Chrome o Edge actualizado. Puedes cambiar JPG/PNG/WebP y MP4/MOV/WebM.
+      </div>
+      <div class="admin-pending" id="adminPending" hidden>
+        <div class="admin-pending-text" id="adminPendingText">Hay cambios pendientes.</div>
+        <div class="admin-actions">
+          <button class="admin-btn" id="adminSavePending" type="button">Guardar cambios</button>
+          <button class="admin-btn secondary" id="adminCancelPending" type="button">Cancelar cambios</button>
+        </div>
+      </div>
+      <div class="admin-status" id="adminStatus">Esperando contraseña.</div>
+    </div>
+  </div>
+
+  <div class="admin-context-menu" id="adminContextMenu" aria-hidden="true">
+    <label for="adminTextValue">Texto seleccionado</label>
+    <textarea id="adminTextValue"></textarea>
+    <div class="admin-color-row">
+      <label for="adminTextColor">Color</label>
+      <input id="adminTextColor" type="color" value="#1A1A2E">
+    </div>
+    <label for="adminFontFamily">Tipo de letra</label>
+    <select id="adminFontFamily">
+      <option value="">Mantener actual</option>
+      <option value="'Nunito', sans-serif">Nunito</option>
+      <option value="'Pacifico', cursive">Pacifico</option>
+      <option value="'Dancing Script', cursive">Dancing Script</option>
+      <option value="Arial, sans-serif">Arial</option>
+      <option value="Georgia, serif">Georgia</option>
+    </select>
+    <div class="admin-actions">
+      <button class="admin-btn" id="adminApplyText" type="button">Aplicar</button>
+      <button class="admin-btn secondary" id="adminCancelText" type="button">Cancelar</button>
+    </div>
+  </div>
+
+  <div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+    <div class="image-lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="imageLightboxTitle">
+      <div class="image-lightbox-head">
+        <div class="image-lightbox-title" id="imageLightboxTitle">Creaciones Ane</div>
+        <button class="image-lightbox-close" type="button" aria-label="Cerrar imagen ampliada">×</button>
+      </div>
+      <div class="image-lightbox-frame">
+        <img class="image-lightbox-img" src="" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Portada responsive desde index.html
+    const portadaMobileQuery = window.matchMedia('(max-width: 768px)');
+    function cambiarImagenPortada() {
+      const heroImage = document.getElementById('heroImage');
+      if (!heroImage) return;
+      heroImage.src = 'assets/Creaciones_Anes_con_logo.png';
+    }
+    cambiarImagenPortada();
+    if (portadaMobileQuery.addEventListener) {
+      portadaMobileQuery.addEventListener('change', cambiarImagenPortada);
+    } else if (portadaMobileQuery.addListener) {
+      portadaMobileQuery.addListener(cambiarImagenPortada);
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => io.observe(el));
+
+    // Visor ampliado para las nuevas imagenes
+    const imageLightbox = document.getElementById('imageLightbox');
+    const imageLightboxImg = imageLightbox?.querySelector('.image-lightbox-img');
+    const imageLightboxTitle = document.getElementById('imageLightboxTitle');
+    const imageLightboxClose = imageLightbox?.querySelector('.image-lightbox-close');
+
+    function openImageLightbox(button) {
+      if (!imageLightbox || !imageLightboxImg || !imageLightboxTitle) return;
+      const src = button.dataset.lightboxSrc;
+      const title = button.dataset.lightboxTitle || 'Creaciones Ane';
+      const img = button.querySelector('img');
+      imageLightboxImg.src = src;
+      imageLightboxImg.alt = img?.alt || title;
+      imageLightboxTitle.textContent = title;
+      imageLightbox.classList.add('open');
+      imageLightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      imageLightboxClose?.focus();
+    }
+
+    function closeImageLightbox() {
+      if (!imageLightbox || !imageLightboxImg) return;
+      imageLightbox.classList.remove('open');
+      imageLightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        if (!imageLightbox.classList.contains('open')) imageLightboxImg.src = '';
+      }, 250);
+    }
+
+    document.querySelectorAll('.new-service-zoom').forEach(button => {
+      button.addEventListener('click', () => openImageLightbox(button));
+    });
+
+    imageLightboxClose?.addEventListener('click', closeImageLightbox);
+    imageLightbox?.addEventListener('click', (event) => {
+      if (event.target === imageLightbox) closeImageLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && imageLightbox?.classList.contains('open')) {
+        closeImageLightbox();
+      }
+    });
+
+    // Popup discreto de WhatsApp
+    const whatsappPopup = document.getElementById('whatsappPopup');
+    const whatsappPopupDismiss = whatsappPopup?.querySelector('.whatsapp-popup-dismiss');
+    const whatsappPopupLink = whatsappPopup?.querySelector('.whatsapp-popup-link');
+    let whatsappPopupWasShown = sessionStorage.getItem('whatsappPopupShown') === 'true';
+    const whatsappPopupMobileQuery = window.matchMedia('(max-width: 640px), (pointer: coarse)');
+
+    function showWhatsappPopup() {
+      if (!whatsappPopup || whatsappPopupWasShown) return;
+      if (whatsappPopupMobileQuery.matches) return;
+      whatsappPopup.classList.add('show');
+      whatsappPopupWasShown = true;
+      sessionStorage.setItem('whatsappPopupShown', 'true');
+    }
+
+    function hideWhatsappPopup() {
+      whatsappPopup?.classList.remove('show');
+    }
+
+    window.setTimeout(showWhatsappPopup, 60000);
+    whatsappPopupDismiss?.addEventListener('click', hideWhatsappPopup);
+    whatsappPopupLink?.addEventListener('click', hideWhatsappPopup);
+
+    // Herramientas locales de administracion
+    const ADMIN_PASSWORD = 'Anelissa030316';
+    const ADMIN_STORAGE_KEY = 'creacionesAneAdminChanges';
+    const adminEntry = document.getElementById('adminEntry');
+    const adminPanel = document.getElementById('adminPanel');
+    const adminLogin = document.getElementById('adminLogin');
+    const adminTools = document.getElementById('adminTools');
+    const adminPassword = document.getElementById('adminPassword');
+    const adminLoginBtn = document.getElementById('adminLoginBtn');
+    const adminCloseBtn = document.getElementById('adminCloseBtn');
+    const adminPickRoot = document.getElementById('adminPickRoot');
+    const adminToggleText = document.getElementById('adminToggleText');
+    const adminEditMedia = document.getElementById('adminEditMedia');
+    const adminExitEdit = document.getElementById('adminExitEdit');
+    const adminCompactPanel = document.getElementById('adminCompactPanel');
+    const adminExpandPanel = document.getElementById('adminExpandPanel');
+    const adminSavePage = document.getElementById('adminSavePage');
+    const adminExportZip = document.getElementById('adminExportZip');
+    const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+    const adminStatus = document.getElementById('adminStatus');
+    const adminPending = document.getElementById('adminPending');
+    const adminPendingText = document.getElementById('adminPendingText');
+    const adminSavePending = document.getElementById('adminSavePending');
+    const adminCancelPending = document.getElementById('adminCancelPending');
+    const adminContextMenu = document.getElementById('adminContextMenu');
+    const adminTextValue = document.getElementById('adminTextValue');
+    const adminTextColor = document.getElementById('adminTextColor');
+    const adminFontFamily = document.getElementById('adminFontFamily');
+    const adminApplyText = document.getElementById('adminApplyText');
+    const adminCancelText = document.getElementById('adminCancelText');
+    let adminUnlocked = false;
+    let adminEditingText = false;
+    let adminEditingMedia = false;
+    let adminSelectedTextElement = null;
+    let adminRootHandle = null;
+    let adminEditCounter = 0;
+    let adminHasPendingChanges = false;
+    let adminChanges = { texts: {}, media: {} };
+
+    try {
+      adminChanges = JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY) || '{"texts":{},"media":{}}');
+    } catch (error) {
+      adminChanges = { texts: {}, media: {} };
+    }
+
+    function setAdminStatus(message) {
+      if (adminStatus) adminStatus.textContent = message;
+    }
+
+    function saveAdminChanges() {
+      localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(adminChanges));
+    }
+
+    function adminConfirm(message) {
+      return window.confirm(message);
+    }
+
+    function showPendingChanges(message) {
+      adminHasPendingChanges = true;
+      if (adminPendingText) adminPendingText.textContent = message || 'Hay cambios pendientes. Guarda o cancela antes de salir.';
+      if (adminPending) adminPending.hidden = true;
+      setAdminStatus(message || 'Hay cambios pendientes. Se guardaran al salir de Admin.');
+    }
+
+    function clearPendingChanges(message = 'Cambios guardados.') {
+      adminHasPendingChanges = false;
+      if (adminPending) adminPending.hidden = true;
+      setAdminStatus(message);
+    }
+
+    function cancelPendingChanges() {
+      if (!adminConfirm('¿Está de acuerdo en cancelar los cambios no guardados y recargar la página?')) return;
+      localStorage.removeItem(ADMIN_STORAGE_KEY);
+      window.location.reload();
+    }
+
+    function openAdminPanel() {
+      adminPanel?.classList.add('open');
+      adminPanel?.setAttribute('aria-hidden', 'false');
+      setTimeout(() => adminPassword?.focus(), 60);
+    }
+
+    function closeAdminPanel() {
+      adminPanel?.classList.remove('open');
+      adminPanel?.setAttribute('aria-hidden', 'true');
+      closeAdminContextMenu();
+    }
+
+    function unlockAdmin() {
+      if (adminPassword?.value !== ADMIN_PASSWORD) {
+        setAdminStatus('Contraseña incorrecta.');
+        alert('Contraseña incorrecta.');
+        return;
+      }
+      adminUnlocked = true;
+      if (adminLogin) adminLogin.hidden = true;
+      if (adminTools) adminTools.hidden = false;
+      adminPanel?.classList.add('compact');
+      setAdminStatus('Admin activo. Puedes editar textos o cambiar imagenes/videos.');
+    }
+
+    async function logoutAdmin() {
+      if (adminHasPendingChanges) {
+        const shouldSave = adminConfirm('Hay cambios pendientes. ¿Deseas guardar index.html antes de salir de Admin?');
+        if (shouldSave) {
+          try {
+            await saveIndexToRoot({ skipConfirm: true });
+          } catch (error) {
+            setAdminStatus(`No se pudo guardar index.html: ${error.message}`);
+            return;
+          }
+        }
+      } else if (!adminConfirm('¿Está de acuerdo en salir del modo Admin?')) {
+        return;
+      }
+      adminUnlocked = false;
+      disableTextEditing();
+      if (adminLogin) adminLogin.hidden = false;
+      if (adminTools) adminTools.hidden = true;
+      if (adminPassword) adminPassword.value = '';
+      adminPanel?.classList.remove('compact');
+      closeAdminPanel();
+      clearPendingChanges('Modo Admin cerrado.');
+    }
+
+    function adminSafeName(name) {
+      const clean = String(name || 'archivo').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9._-]+/gi, '-').replace(/^-+|-+$/g, '').toLowerCase();
+      return clean || `archivo-${Date.now()}`;
+    }
+
+    function adminUniqueId(element, prefix = 'edit') {
+      if (!element.dataset.adminId) {
+        adminEditCounter += 1;
+        element.dataset.adminId = `${prefix}-${Date.now()}-${adminEditCounter}`;
+      }
+      return element.dataset.adminId;
+    }
+
+    function applyStoredAdminChanges() {
+      Object.entries(adminChanges.texts || {}).forEach(([id, data]) => {
+        const element = document.querySelector(`[data-admin-id="${CSS.escape(id)}"]`);
+        if (!element) return;
+        if (typeof data.text === 'string') element.textContent = data.text;
+        if (data.color) element.style.color = data.color;
+        if (data.font) element.style.fontFamily = data.font;
+      });
+      Object.entries(adminChanges.media || {}).forEach(([id, data]) => {
+        const element = document.querySelector(`[data-admin-id="${CSS.escape(id)}"]`);
+        if (!element || !data.src) return;
+        setMediaSource(element, data.src, data.type || '');
+      });
+    }
+
+    function setMediaSource(element, src, type = '') {
+      if (element.tagName === 'IMG') {
+        element.src = src;
+        return;
+      }
+      if (element.tagName === 'VIDEO') {
+        element.pause();
+        element.querySelectorAll('source').forEach(source => source.remove());
+        element.src = src;
+        if (type) element.type = type;
+        element.load();
+      }
+    }
+
+    function imageDimensionsFromFile(file) {
+      return new Promise((resolve, reject) => {
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => {
+          URL.revokeObjectURL(url);
+          resolve({ width: img.naturalWidth, height: img.naturalHeight });
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error('No se pudo analizar la imagen.'));
+        };
+        img.src = url;
+      });
+    }
+
+    async function analyzeMediaQuality(file, element) {
+      const isVideo = element.tagName === 'VIDEO';
+      if (isVideo) {
+        const sizeMb = file.size / (1024 * 1024);
+        const suggestions = [];
+        if (!/\.mp4$/i.test(file.name) && file.type !== 'video/mp4') {
+          suggestions.push('para máxima compatibilidad conviene MP4');
+        }
+        if (sizeMb > 25) {
+          suggestions.push('el video es algo pesado; si tarda en cargar, conviene comprimirlo');
+        }
+        element.setAttribute('preload', 'metadata');
+        element.setAttribute('playsinline', '');
+        return `Análisis IA: video ${file.type || 'sin tipo'} (${sizeMb.toFixed(1)} MB). ${suggestions.length ? `Sugerencia: ${suggestions.join(', ')}.` : 'Se ve adecuado para publicar.'}`;
+      }
+
+      const dimensions = await imageDimensionsFromFile(file);
+      const box = element.getBoundingClientRect();
+      const targetW = Math.max(1, Math.round(box.width * window.devicePixelRatio));
+      const targetH = Math.max(1, Math.round(box.height * window.devicePixelRatio));
+      const imageRatio = dimensions.width / dimensions.height;
+      const targetRatio = targetW / targetH;
+      const ratioDiff = Math.abs(imageRatio - targetRatio);
+      const suggestions = [];
+
+      if (dimensions.width < targetW || dimensions.height < targetH) {
+        suggestions.push(`mejor usar mínimo ${targetW}x${targetH}px para que no pierda nitidez`);
+      }
+      if (ratioDiff > .45) {
+        suggestions.push('la proporción es distinta al espacio; ajusté la imagen para que no se corte demasiado');
+        element.style.objectFit = 'contain';
+        element.style.backgroundColor = '#fff';
+      } else {
+        suggestions.push('la proporción combina bien; ajusté el encuadre al centro');
+        element.style.objectFit = element.closest('.product-img-contain,.gallery-contain') ? 'contain' : 'cover';
+      }
+      element.style.objectPosition = 'center center';
+      element.loading = 'lazy';
+
+      return `Análisis IA: imagen ${dimensions.width}x${dimensions.height}px. ${suggestions.join(' ')}`;
+    }
+
+    function markEditableText() {
+      const selector = 'h1,h2,h3,h4,p,li,a,button:not(.admin-btn):not(.admin-entry),span,strong,em,small,label,.section-title,.section-sub,.product-title,.product-desc,.contact-val,.contact-label,.video-caption';
+      document.querySelectorAll(selector).forEach(element => {
+        if (element.closest('.admin-panel,.admin-context-menu,script,style')) return;
+        if (!element.textContent.trim()) return;
+        element.dataset.adminEditable = 'true';
+      });
+    }
+
+    function enableTextEditing() {
+      if (!adminUnlocked) return;
+      adminEditingText = true;
+      markEditableText();
+      document.body.classList.add('admin-editing');
+      adminPanel?.classList.add('compact');
+      setAdminStatus('Edicion de texto activa. Haz click sobre un texto para modificarlo.');
+    }
+
+    function disableTextEditing() {
+      adminEditingText = false;
+      adminEditingMedia = false;
+      document.body.classList.remove('admin-editing');
+      closeAdminContextMenu();
+      document.querySelectorAll('.admin-selected').forEach(element => element.classList.remove('admin-selected'));
+      setAdminStatus('Edicion de texto desactivada.');
+    }
+
+    function enableMediaEditing() {
+      if (!adminUnlocked) return;
+      adminPanel?.classList.add('compact');
+      setAdminStatus('Listo: haz doble click sobre una imagen JPG/PNG/WebP o un video MP4/MOV/WebM para reemplazarlo.');
+    }
+
+    function openAdminContextMenu(event, element) {
+      adminSelectedTextElement?.classList.remove('admin-selected');
+      adminSelectedTextElement = element;
+      adminSelectedTextElement.classList.add('admin-selected');
+      adminTextValue.value = element.textContent.trim();
+      adminTextColor.value = rgbToHex(getComputedStyle(element).color) || '#1A1A2E';
+      adminFontFamily.value = '';
+      adminContextMenu.style.left = `${Math.min(event.clientX, window.innerWidth - 332)}px`;
+      adminContextMenu.style.top = `${Math.min(event.clientY, window.innerHeight - 360)}px`;
+      adminContextMenu.classList.add('open');
+      adminContextMenu.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeAdminContextMenu() {
+      adminContextMenu?.classList.remove('open');
+      adminContextMenu?.setAttribute('aria-hidden', 'true');
+    }
+
+    function rgbToHex(color) {
+      const match = color.match(/\d+/g);
+      if (!match || match.length < 3) return '#1A1A2E';
+      return `#${match.slice(0, 3).map(value => Number(value).toString(16).padStart(2, '0')).join('')}`;
+    }
+
+    async function pickRootFolder() {
+      if (!window.showDirectoryPicker) {
+        alert('Tu navegador no permite elegir carpetas. Usa Chrome o Edge actualizado.');
+        return;
+      }
+      if (!adminConfirm('¿Está de acuerdo en permitir acceso a la carpeta raíz para guardar fotos_mpg, index.html y el ZIP?')) return;
+      adminRootHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+      await adminRootHandle.getDirectoryHandle('fotos_mpg', { create: true });
+      setAdminStatus('Carpeta raiz seleccionada. Los archivos nuevos se guardaran en fotos_mpg.');
+    }
+
+    async function writeFileToFotos(file) {
+      if (!adminRootHandle) {
+        await pickRootFolder();
+      }
+      if (!adminRootHandle) throw new Error('No se selecciono carpeta raiz.');
+      const mediaDir = await adminRootHandle.getDirectoryHandle('fotos_mpg', { create: true });
+      const filename = `${Date.now()}-${adminSafeName(file.name)}`;
+      const fileHandle = await mediaDir.getFileHandle(filename, { create: true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(file);
+      await writable.close();
+      return `fotos_mpg/${filename}`;
+    }
+
+    function chooseMediaFor(element) {
+      if (!adminUnlocked) return;
+      const label = element.tagName === 'VIDEO' ? 'video MP4/MOV/WebM' : 'imagen JPG/PNG/WebP';
+      if (!adminConfirm(`¿Está de acuerdo en cambiar este ${label}?`)) return;
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = element.tagName === 'VIDEO' ? '.mp4,.mov,.webm,video/mp4,video/quicktime,video/webm' : '.jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp';
+      input.addEventListener('change', async () => {
+        const file = input.files?.[0];
+        if (!file) return;
+        const isVideo = element.tagName === 'VIDEO';
+        const valid = isVideo
+          ? /(\.mp4|\.mov|\.webm)$/i.test(file.name) || ['video/mp4', 'video/quicktime', 'video/webm'].includes(file.type)
+          : /(\.jpe?g|\.png|\.webp)$/i.test(file.name) || ['image/jpeg', 'image/png', 'image/webp'].includes(file.type);
+        if (!valid) {
+          alert(isVideo ? 'Selecciona un video MP4, MOV o WebM.' : 'Selecciona una imagen JPG, PNG o WebP.');
+          return;
+        }
+        const id = adminUniqueId(element, 'media');
+        const previewUrl = URL.createObjectURL(file);
+        let qualityMessage = 'Análisis IA: archivo cargado. Se ajustó la vista previa lo mejor posible.';
+        try {
+          qualityMessage = await analyzeMediaQuality(file, element);
+        } catch (error) {
+          qualityMessage = 'Análisis IA: no pude medir la calidad, pero dejé una vista previa ajustada.';
+        }
+        setMediaSource(element, previewUrl, file.type);
+        try {
+          const relativePath = await writeFileToFotos(file);
+          setMediaSource(element, relativePath, file.type);
+          adminChanges.media[id] = { src: relativePath, type: file.type };
+          saveAdminChanges();
+          showPendingChanges(`${qualityMessage} Archivo guardado en ${relativePath}. La pagina se guardara al salir de Admin.`);
+        } catch (error) {
+          showPendingChanges(`${qualityMessage} Vista previa aplicada, pero falta elegir carpeta raiz para guardar el archivo.`);
+        }
+      });
+      input.click();
+    }
+
+    function getCleanDocumentHtml() {
+      const clone = document.documentElement.cloneNode(true);
+      clone.classList.remove('admin-editing');
+      clone.querySelectorAll('.admin-selected').forEach(element => element.classList.remove('admin-selected'));
+      clone.querySelectorAll('[contenteditable]').forEach(element => element.removeAttribute('contenteditable'));
+      const panel = clone.querySelector('#adminPanel');
+      const menu = clone.querySelector('#adminContextMenu');
+      const login = clone.querySelector('#adminLogin');
+      const tools = clone.querySelector('#adminTools');
+      const pending = clone.querySelector('#adminPending');
+      if (panel) {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+      }
+      if (menu) {
+        menu.classList.remove('open');
+        menu.setAttribute('aria-hidden', 'true');
+        menu.removeAttribute('style');
+      }
+      if (login) login.hidden = false;
+      if (tools) tools.hidden = true;
+      if (pending) pending.hidden = true;
+      return `<!DOCTYPE html>\n${clone.outerHTML}`;
+    }
+
+    async function saveIndexToRoot(options = {}) {
+      if (!adminUnlocked) return;
+      if (!options.skipConfirm && !adminConfirm('¿Está de acuerdo en guardar los cambios en index.html?')) return;
+      if (!adminRootHandle) await pickRootFolder();
+      if (!adminRootHandle) return;
+      const fileHandle = await adminRootHandle.getFileHandle('index.html', { create: true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(getCleanDocumentHtml());
+      await writable.close();
+      clearPendingChanges('index.html guardado en la carpeta raiz seleccionada.');
+    }
+
+    function downloadBlob(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1200);
+    }
+
+    const crcTable = (() => {
+      const table = new Uint32Array(256);
+      for (let i = 0; i < 256; i++) {
+        let c = i;
+        for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1;
+        table[i] = c >>> 0;
+      }
+      return table;
+    })();
+
+    function crc32(bytes) {
+      let crc = 0xFFFFFFFF;
+      for (const byte of bytes) crc = crcTable[(crc ^ byte) & 0xFF] ^ (crc >>> 8);
+      return (crc ^ 0xFFFFFFFF) >>> 0;
+    }
+
+    function textBytes(text) {
+      return new TextEncoder().encode(text);
+    }
+
+    function u16(value) {
+      return new Uint8Array([value & 255, (value >>> 8) & 255]);
+    }
+
+    function u32(value) {
+      return new Uint8Array([value & 255, (value >>> 8) & 255, (value >>> 16) & 255, (value >>> 24) & 255]);
+    }
+
+    function zipDateParts(date = new Date()) {
+      const time = (date.getHours() << 11) | (date.getMinutes() << 5) | Math.floor(date.getSeconds() / 2);
+      const day = ((date.getFullYear() - 1980) << 9) | ((date.getMonth() + 1) << 5) | date.getDate();
+      return { time, day };
+    }
+
+    function concatBytes(parts) {
+      const size = parts.reduce((sum, part) => sum + part.length, 0);
+      const output = new Uint8Array(size);
+      let offset = 0;
+      parts.forEach(part => {
+        output.set(part, offset);
+        offset += part.length;
+      });
+      return output;
+    }
+
+    function buildZip(files) {
+      const localParts = [];
+      const centralParts = [];
+      let offset = 0;
+      const { time, day } = zipDateParts();
+      files.forEach(file => {
+        const name = textBytes(file.path.replace(/\\/g, '/'));
+        const data = file.data instanceof Uint8Array ? file.data : new Uint8Array(file.data);
+        const crc = crc32(data);
+        const local = concatBytes([
+          u32(0x04034b50), u16(20), u16(0), u16(0), u16(time), u16(day), u32(crc),
+          u32(data.length), u32(data.length), u16(name.length), u16(0), name, data
+        ]);
+        const central = concatBytes([
+          u32(0x02014b50), u16(20), u16(20), u16(0), u16(0), u16(time), u16(day), u32(crc),
+          u32(data.length), u32(data.length), u16(name.length), u16(0), u16(0), u16(0), u16(0),
+          u32(0), u32(offset), name
+        ]);
+        localParts.push(local);
+        centralParts.push(central);
+        offset += local.length;
+      });
+      const centralSize = centralParts.reduce((sum, part) => sum + part.length, 0);
+      const end = concatBytes([
+        u32(0x06054b50), u16(0), u16(0), u16(files.length), u16(files.length),
+        u32(centralSize), u32(offset), u16(0)
+      ]);
+      return new Blob([...localParts, ...centralParts, end], { type: 'application/zip' });
+    }
+
+    async function collectDirectoryFiles(handle, prefix = '') {
+      const files = [];
+      for await (const [name, entry] of handle.entries()) {
+        if (name === '.git' || name === 'backups') continue;
+        const rel = prefix ? `${prefix}/${name}` : name;
+        if (entry.kind === 'directory') {
+          files.push(...await collectDirectoryFiles(entry, rel));
+        } else {
+          const file = await entry.getFile();
+          const data = new Uint8Array(await file.arrayBuffer());
+          files.push({ path: rel, data });
+        }
+      }
+      return files;
+    }
+
+    async function exportRootZip(options = {}) {
+      if (!adminUnlocked) return;
+      if (!options.skipConfirm && !adminConfirm('¿Está de acuerdo en comprimir toda la carpeta para enviarla al desarrollador?')) return;
+      if (!adminRootHandle) await pickRootFolder();
+      if (!adminRootHandle) return;
+      setAdminStatus('Leyendo carpeta para crear ZIP...');
+      const files = await collectDirectoryFiles(adminRootHandle);
+      const indexBytes = textBytes(getCleanDocumentHtml());
+      const existingIndex = files.find(file => file.path.toLowerCase() === 'index.html');
+      if (existingIndex) existingIndex.data = indexBytes;
+      else files.push({ path: 'index.html', data: indexBytes });
+      const zip = buildZip(files);
+      downloadBlob(zip, `creaciones-ane-publicacion-${new Date().toISOString().slice(0, 10)}.zip`);
+      setAdminStatus('ZIP creado. Revisa tus descargas para enviarlo al desarrollador.');
+    }
+
+    adminEntry?.addEventListener('dblclick', openAdminPanel);
+    adminEntry?.addEventListener('click', () => {
+      if (adminPanel?.classList.contains('open')) closeAdminPanel();
+    });
+    adminLoginBtn?.addEventListener('click', unlockAdmin);
+    adminPassword?.addEventListener('keydown', event => {
+      if (event.key === 'Enter') unlockAdmin();
+    });
+    adminCloseBtn?.addEventListener('click', closeAdminPanel);
+    adminPickRoot?.addEventListener('click', () => pickRootFolder().catch(error => setAdminStatus(error.message)));
+    adminToggleText?.addEventListener('click', enableTextEditing);
+    adminEditMedia?.addEventListener('click', enableMediaEditing);
+    adminExitEdit?.addEventListener('click', disableTextEditing);
+    adminCompactPanel?.addEventListener('click', () => adminPanel?.classList.add('compact'));
+    adminExpandPanel?.addEventListener('click', () => adminPanel?.classList.remove('compact'));
+    adminLogoutBtn?.addEventListener('click', () => logoutAdmin().catch(error => setAdminStatus(error.message)));
+    adminSavePage?.addEventListener('click', () => saveIndexToRoot().catch(error => setAdminStatus(error.message)));
+    adminExportZip?.addEventListener('click', () => exportRootZip().catch(error => setAdminStatus(error.message)));
+    adminSavePending?.addEventListener('click', () => saveIndexToRoot().catch(error => setAdminStatus(error.message)));
+    adminCancelPending?.addEventListener('click', cancelPendingChanges);
+
+    adminApplyText?.addEventListener('click', () => {
+      if (!adminSelectedTextElement) return;
+      if (!adminConfirm('¿Está de acuerdo en aplicar este cambio de texto?')) return;
+      const id = adminUniqueId(adminSelectedTextElement, 'text');
+      adminSelectedTextElement.textContent = adminTextValue.value;
+      adminSelectedTextElement.style.color = adminTextColor.value;
+      if (adminFontFamily.value) adminSelectedTextElement.style.fontFamily = adminFontFamily.value;
+      adminChanges.texts[id] = {
+        text: adminTextValue.value,
+        color: adminTextColor.value,
+        font: adminFontFamily.value || adminSelectedTextElement.style.fontFamily || ''
+      };
+      saveAdminChanges();
+      closeAdminContextMenu();
+      showPendingChanges('Texto actualizado. La pagina se guardara al salir de Admin.');
+    });
+
+    adminCancelText?.addEventListener('click', closeAdminContextMenu);
+
+    document.addEventListener('dblclick', event => {
+      if (!adminUnlocked) return;
+      const element = event.target.closest('img,video');
+      if (element && !element.closest('.admin-panel,.admin-context-menu')) {
+        event.preventDefault();
+        event.stopPropagation();
+        adminPanel?.classList.add('compact');
+        chooseMediaFor(element);
+        return;
+      }
+      if (!adminEditingText) return;
+      const textElement = event.target.closest('[data-admin-editable="true"]');
+      if (!textElement || textElement.closest('.admin-panel,.admin-context-menu')) return;
+      event.preventDefault();
+      event.stopPropagation();
+      adminUniqueId(textElement, 'text');
+      openAdminContextMenu(event, textElement);
+    }, true);
+
+    applyStoredAdminChanges();
+
+    const mobileNavLinks = document.getElementById('navLinks');
+    const hamburgerButton = document.getElementById('hamburger');
+    const desktopNavQuery = window.matchMedia('(min-width: 1181px)');
+
+    function setMobileNavOpen(open) {
+      if (!mobileNavLinks) return;
+      const isDesktop = desktopNavQuery.matches;
+      mobileNavLinks.classList.toggle('open', open && !isDesktop);
+      mobileNavLinks.hidden = !isDesktop && !open;
+      if (hamburgerButton) {
+        hamburgerButton.setAttribute('aria-expanded', String(open && !isDesktop));
+      }
+    }
+
+    function syncNavForViewport() {
+      if (!mobileNavLinks) return;
+      if (desktopNavQuery.matches) {
+        mobileNavLinks.hidden = false;
+        mobileNavLinks.classList.remove('open');
+        hamburgerButton?.setAttribute('aria-expanded', 'false');
+      } else {
+        setMobileNavOpen(mobileNavLinks.classList.contains('open'));
+      }
+    }
+
+    hamburgerButton?.addEventListener('click', () => {
+      setMobileNavOpen(!mobileNavLinks?.classList.contains('open'));
+    });
+
+    hamburgerButton?.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setMobileNavOpen(!mobileNavLinks?.classList.contains('open'));
+      }
+    });
+
+    if (desktopNavQuery.addEventListener) {
+      desktopNavQuery.addEventListener('change', syncNavForViewport);
+    } else {
+      desktopNavQuery.addListener(syncNavForViewport);
+    }
+
+    syncNavForViewport();
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => setMobileNavOpen(false));
+    });
+
+    // WhatsApp form sender
+    function sendWhatsApp() {
+      const name = document.getElementById('fname').value.trim();
+      const email = document.getElementById('femail').value.trim();
+      const product = document.getElementById('fproduct').value;
+      const msg = document.getElementById('fmsg').value.trim();
+      if (!name || !msg) { alert('Por favor completa tu nombre y mensaje 💌'); return; }
+      const text = `Hola Creaciones Ane! 🌸%0A%0A*Nombre:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email || 'No indicado')}%0A*Producto:* ${encodeURIComponent(product || 'No indicado')}%0A%0A*Mi idea:*%0A${encodeURIComponent(msg)}`;
+      window.open(`https://wa.me/12028936939?text=${text}`, '_blank');
+    }
+
+    // Nav active highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--yellow)' : '';
+      });
+    });
+  </script>
 </body>
+
 </html>
