@@ -1,0 +1,10 @@
+name = "creaciones-ane-github-channel"
+main = "worker.js"
+compatibility_date = "2026-05-19"
+
+[vars]
+GITHUB_OWNER = "eduvc71-code"
+GITHUB_REPO = "creaciones-ane"
+GITHUB_BRANCH = "main"
+# Cambia esto por el dominio real donde publiques la pagina.
+ALLOWED_ORIGINS = "https://tu-dominio.com"

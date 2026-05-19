@@ -3006,12 +3006,13 @@
         <button class="admin-btn secondary" id="adminCompactPanel" type="button">Reducir panel</button>
         <button class="admin-btn secondary" id="adminExpandPanel" type="button">Expandir panel</button>
         <button class="admin-btn" id="adminSavePage" type="button">Guardar index.html</button>
+        <button class="admin-btn" id="adminPublishGitHub" type="button">Enviar a GitHub</button>
         <button class="admin-btn secondary" id="adminExportZip" type="button">Comprimir carpeta</button>
         <button class="admin-btn danger full" id="adminLogoutBtn" type="button">Salir Admin</button>
       </div>
       <div class="admin-help">
-        Las imágenes o videos nuevos se guardan en <strong>fotos_mpg</strong> cuando eliges la carpeta raíz. Si el
-        navegador no permite acceso a carpetas, usa Chrome o Edge actualizado. Puedes cambiar JPG/PNG/WebP y MP4/MOV/WebM.
+        Las imágenes o videos nuevos se guardan en <strong>fotos_mpg</strong> cuando eliges la carpeta raíz. También
+        puedes enviarlos a GitHub si el canal seguro ya está configurado. Puedes cambiar JPG/PNG/WebP y MP4/MOV/WebM.
       </div>
       <div class="admin-pending" id="adminPending" hidden>
         <div class="admin-pending-text" id="adminPendingText">Hay cambios pendientes.</div>
@@ -3169,6 +3170,7 @@
     const adminCompactPanel = document.getElementById('adminCompactPanel');
     const adminExpandPanel = document.getElementById('adminExpandPanel');
     const adminSavePage = document.getElementById('adminSavePage');
+    const adminPublishGitHub = document.getElementById('adminPublishGitHub');
     const adminExportZip = document.getElementById('adminExportZip');
     const adminLogoutBtn = document.getElementById('adminLogoutBtn');
     const adminStatus = document.getElementById('adminStatus');
@@ -3190,6 +3192,7 @@
     let adminEditCounter = 0;
     let adminHasPendingChanges = false;
     let adminChanges = { texts: {}, media: {} };
+    let adminPendingUploads = {};
 
     try {
       adminChanges = JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY) || '{"texts":{},"media":{}}');
@@ -3281,6 +3284,29 @@
       const clean = String(name || 'archivo').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
         .replace(/[^a-z0-9._-]+/gi, '-').replace(/^-+|-+$/g, '').toLowerCase();
       return clean || `archivo-${Date.now()}`;
+    }
+
+    function adminMediaPathFor(file) {
+      return `fotos_mpg/${Date.now()}-${adminSafeName(file.name)}`;
+    }
+
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const result = String(reader.result || '');
+          resolve(result.includes(',') ? result.split(',')[1] : result);
+        };
+        reader.onerror = () => reject(new Error('No se pudo leer el archivo seleccionado.'));
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function textToBase64(text) {
+      const bytes = new TextEncoder().encode(text);
+      let binary = '';
+      bytes.forEach(byte => { binary += String.fromCharCode(byte); });
+      return btoa(binary);
     }
 
     function adminUniqueId(element, prefix = 'edit') {
@@ -3446,13 +3472,13 @@
       setAdminStatus('Carpeta raiz seleccionada. Los archivos nuevos se guardaran en fotos_mpg.');
     }
 
-    async function writeFileToFotos(file) {
+    async function writeFileToFotos(file, relativePath = '') {
       if (!adminRootHandle) {
         await pickRootFolder();
       }
       if (!adminRootHandle) throw new Error('No se selecciono carpeta raiz.');
       const mediaDir = await adminRootHandle.getDirectoryHandle('fotos_mpg', { create: true });
-      const filename = `${Date.now()}-${adminSafeName(file.name)}`;
+      const filename = relativePath.startsWith('fotos_mpg/') ? relativePath.slice('fotos_mpg/'.length) : adminSafeName(file.name);
       const fileHandle = await mediaDir.getFileHandle(filename, { create: true });
       const writable = await fileHandle.createWritable();
       await writable.write(file);
@@ -3479,6 +3505,7 @@
           return;
         }
         const id = adminUniqueId(element, 'media');
+        const relativePath = adminMediaPathFor(file);
         const previewUrl = URL.createObjectURL(file);
         let qualityMessage = 'Análisis IA: archivo cargado. Se ajustó la vista previa lo mejor posible.';
         try {
@@ -3487,14 +3514,18 @@
           qualityMessage = 'Análisis IA: no pude medir la calidad, pero dejé una vista previa ajustada.';
         }
         setMediaSource(element, previewUrl, file.type);
+        adminPendingUploads[relativePath] = {
+          path: relativePath,
+          contentBase64: await fileToBase64(file),
+          contentType: file.type || 'application/octet-stream'
+        };
+        adminChanges.media[id] = { src: relativePath, type: file.type };
+        saveAdminChanges();
         try {
-          const relativePath = await writeFileToFotos(file);
-          setMediaSource(element, relativePath, file.type);
-          adminChanges.media[id] = { src: relativePath, type: file.type };
-          saveAdminChanges();
-          showPendingChanges(`${qualityMessage} Archivo guardado en ${relativePath}. La pagina se guardara al salir de Admin.`);
+          await writeFileToFotos(file, relativePath);
+          showPendingChanges(`${qualityMessage} Archivo preparado en ${relativePath}. Puedes guardar localmente o enviarlo a GitHub.`);
         } catch (error) {
-          showPendingChanges(`${qualityMessage} Vista previa aplicada, pero falta elegir carpeta raiz para guardar el archivo.`);
+          showPendingChanges(`${qualityMessage} Vista previa aplicada. El archivo esta listo para enviarse a GitHub como ${relativePath}.`);
         }
       });
       input.click();
@@ -3510,6 +3541,22 @@
       const login = clone.querySelector('#adminLogin');
       const tools = clone.querySelector('#adminTools');
       const pending = clone.querySelector('#adminPending');
+      Object.entries(adminChanges.media || {}).forEach(([id, data]) => {
+        const element = clone.querySelector(`[data-admin-id="${CSS.escape(id)}"]`);
+        if (!element || !data.src) return;
+        if (element.tagName === 'IMG') {
+          element.setAttribute('src', data.src);
+          return;
+        }
+        if (element.tagName === 'VIDEO') {
+          element.removeAttribute('src');
+          element.querySelectorAll('source').forEach(source => source.remove());
+          const source = clone.ownerDocument.createElement('source');
+          source.setAttribute('src', data.src);
+          source.setAttribute('type', data.type || 'video/mp4');
+          element.prepend(source);
+        }
+      });
       if (panel) {
         panel.classList.remove('open');
         panel.setAttribute('aria-hidden', 'true');
@@ -3535,6 +3582,44 @@
       await writable.write(getCleanDocumentHtml());
       await writable.close();
       clearPendingChanges('index.html guardado en la carpeta raiz seleccionada.');
+    }
+
+    async function publishAdminChangesToGitHub() {
+      if (!adminUnlocked) return;
+      const endpointKey = 'creacionesAneGitHubEndpoint';
+      let endpoint = localStorage.getItem(endpointKey) || window.CREACIONES_ANE_GITHUB_ENDPOINT || '';
+      if (!endpoint) {
+        endpoint = window.prompt('Pega la URL del canal seguro GitHub, por ejemplo https://tu-worker.workers.dev/api/publish') || '';
+        endpoint = endpoint.trim();
+        if (!endpoint) return;
+        localStorage.setItem(endpointKey, endpoint);
+      }
+      const publishKey = window.prompt('Clave privada de publicación GitHub');
+      if (!publishKey) return;
+      if (!adminConfirm('¿Está de acuerdo en enviar estos cambios a GitHub?')) return;
+
+      const files = [{
+        path: 'index.html',
+        contentBase64: textToBase64(getCleanDocumentHtml()),
+        contentType: 'text/html; charset=utf-8'
+      }, ...Object.values(adminPendingUploads)];
+
+      setAdminStatus('Enviando cambios a GitHub...');
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          publishKey,
+          message: `Actualización Admin Creaciones Ane ${new Date().toLocaleString()}`,
+          files
+        })
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(result.error || 'No se pudo publicar en GitHub.');
+      }
+      adminPendingUploads = {};
+      clearPendingChanges(`GitHub actualizado: ${files.length} archivo(s) publicado(s).`);
     }
 
     function downloadBlob(blob, filename) {
@@ -3672,6 +3757,7 @@
     adminExpandPanel?.addEventListener('click', () => adminPanel?.classList.remove('compact'));
     adminLogoutBtn?.addEventListener('click', () => logoutAdmin().catch(error => setAdminStatus(error.message)));
     adminSavePage?.addEventListener('click', () => saveIndexToRoot().catch(error => setAdminStatus(error.message)));
+    adminPublishGitHub?.addEventListener('click', () => publishAdminChangesToGitHub().catch(error => setAdminStatus(error.message)));
     adminExportZip?.addEventListener('click', () => exportRootZip().catch(error => setAdminStatus(error.message)));
     adminSavePending?.addEventListener('click', () => saveIndexToRoot().catch(error => setAdminStatus(error.message)));
     adminCancelPending?.addEventListener('click', cancelPendingChanges);
